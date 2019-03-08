@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateShopCartsTable extends Migration
+class CreateShopOrderedProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,16 @@ class CreateShopCartsTable extends Migration
      */
     public function up()
     {
-        Schema::create('shop_carts', function (Blueprint $table) {
+        Schema::create('shop_ordered_products', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('order_id');
+
+
+            $table->string('title');
+
+            $table->integer('price')->unsigned();
+            $table->integer('discount')->unsigned();
 
             $table->boolean('is_published')->default(false);
             $table->timestamp('published_at')->nullable();
@@ -23,7 +30,8 @@ class CreateShopCartsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('product_id')->references('id')->on('shop_products');
+            $table->foreign('order_id')->references('id')->on('shop_orders');
             $table->index('is_published');
         });
     }
@@ -35,6 +43,6 @@ class CreateShopCartsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shop_carts');
+        Schema::dropIfExists('shop_ordered_products');
     }
 }

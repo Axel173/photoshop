@@ -15,7 +15,20 @@ class CreateShopOrdersTable extends Migration
     {
         Schema::create('shop_orders', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('payment_id');
+
+            $table->integer('total_price')->unsigned();
+            $table->text('description');
+
+            $table->boolean('is_published')->default(false);
+            $table->timestamp('published_at')->nullable();
+
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->foreign('payment_id')->references('id')->on('shop_payments');
+
+            $table->index('is_published');
         });
     }
 

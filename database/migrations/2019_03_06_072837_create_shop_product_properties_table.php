@@ -15,7 +15,21 @@ class CreateShopProductPropertiesTable extends Migration
     {
         Schema::create('shop_product_properties', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('product_id');
+
+            $table->string('slug')->unique();
+            $table->string('title');
+
+            $table->text('value');
+
+            $table->boolean('is_published')->default(false);
+            $table->timestamp('published_at')->nullable();
+
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->foreign('product_id')->references('id')->on('shop_products');
+            $table->index('is_published');
         });
     }
 
