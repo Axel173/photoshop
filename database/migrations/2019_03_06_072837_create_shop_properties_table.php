@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateShopProductPropertiesTable extends Migration
+class CreateShopPropertiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateShopProductPropertiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('shop_product_properties', function (Blueprint $table) {
+        Schema::create('shop_properties', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('product_id');
+
 
             $table->string('slug')->unique();
             $table->string('title');
 
-            $table->text('value');
+            $table->text('type');
+            $table->text('values');
 
             $table->boolean('is_published')->default(false);
             $table->timestamp('published_at')->nullable();
@@ -28,7 +29,6 @@ class CreateShopProductPropertiesTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('product_id')->references('id')->on('shop_products');
             $table->index('is_published');
         });
     }
@@ -40,6 +40,6 @@ class CreateShopProductPropertiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shop_product_properties');
+        Schema::dropIfExists('shop_properties');
     }
 }

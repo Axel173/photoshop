@@ -11,9 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('shop.home.index');
+$groupData = [
+    'namespace' => 'Shop',
+];
+
+Route::group($groupData, function () {
+    Route::get('/', 'HomeController@index');
+
+    Route::get('category/{category_slug}/', 'CategoryController@show')->name('shop.category');
+
+    Route::get('category/{category_slug}/product/{product_slug}/','ProductController@show')->name('shop.product');
 });
+
+
 
 Auth::routes();
 

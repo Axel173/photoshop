@@ -70,7 +70,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <h3>Stock Photo<br>Categories</h3>
         </div>
         <div class="col-md-9 col_5">
-            <div class="col_1_of_5 span_1_of_5">
+            @if (isset($categories))
+                <div class="col_1_of_5 span_1_of_5">
+                    <ul class="list1">
+                        @php $iter = 0; @endphp
+                        @foreach($categories as $category)
+                            <li><a href="{{ route('shop.category', $category->slug) }}">{{ $category->title }}</a></li>
+                            @php $iter++; @endphp
+                            @if($iter > 5)
+                    </ul>
+                </div>
+                <div class="col_1_of_5 span_1_of_5">
+                    <ul class="list1">
+                        @php $iter = 0; @endphp
+                        @endif
+                        @endforeach
+                    </ul>
+                </div>
+            @else
+                Тут сейчас пусто
+            @endif
+            {{--<div class="col_1_of_5 span_1_of_5">
                 <ul class="list1">
                     <li><a href="stock.html">Abstract</a></li>
                     <li><a href="stock.html">Animals/Wildlife</a></li>
@@ -109,9 +129,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li><a href="stock.html">Religion</a></li>
                     <li><a href="stock.html">Science</a></li>
                 </ul>
-            </div>
+            </div>--}}
             <div class="clearfix"></div>
         </div>
+
+
         <div class="clearfix"></div>
     </div>
 </div>

@@ -28,78 +28,31 @@
     </div>
     <div class="grid_1">
         <h3>Over 42 Million Stock Images, Vectors, Footage and Audio Clips</h3>
-        <div class="col-md-2 col_1">
-            <h4>Gym</h4>
-        </div>
-        <div class="col-md-2 col_1">
-            <img src="{{asset('images/g1.jpg')}}" class="img-responsive" alt=""/>
-        </div>
-        <div class="col-md-2 col_1">
-            <img src="{{asset('images/g2.jpg')}}" class="img-responsive" alt=""/>
-        </div>
-        <div class="col-md-2 col_1">
-            <img src="{{asset('images/g3.jpg')}}" class="img-responsive" alt=""/>
-        </div>
-        <div class="col-md-2 col_1">
-            <img src="{{asset('images/g4.jpg')}}" class="img-responsive" alt=""/>
-        </div>
-        <div class="col-md-2 col_1">
-            <img src="{{asset('images/g5.jpg')}}" class="img-responsive" alt=""/>
-        </div>
-        <div class="col-md-2 col_1">
-            <h4>Food</h4>
-        </div>
-        <div class="col-md-2 col_1">
-            <img src="{{asset('images/f1.jpg')}}" class="img-responsive" alt=""/>
-        </div>
-        <div class="col-md-2 col_1">
-            <img src="{{asset('images/pic9.jpg')}}" class="img-responsive" alt=""/>
-        </div>
-        <div class="col-md-2 col_1">
-            <img src="{{asset('images/f2.jpg')}}" class="img-responsive" alt=""/>
-        </div>
-        <div class="col-md-2 col_1">
-            <img src="{{asset('images/f3.jpg')}}" class="img-responsive" alt=""/>
-        </div>
-        <div class="col-md-2 col_1">
-            <img src="{{asset('images/f4.jpg')}}" class="img-responsive" alt=""/>
-        </div>
-        <div class="col-md-2 col_1">
-            <h4>Wedding</h4>
-        </div>
-        <div class="col-md-2 col_1">
-            <img src="{{asset('images/w1.jpg')}}" class="img-responsive" alt=""/>
-        </div>
-        <div class="col-md-2 col_1">
-            <img src="{{asset('images/pic15.jpg')}}" class="img-responsive" alt=""/>
-        </div>
-        <div class="col-md-2 col_1">
-            <img src="{{asset('images/w2.jpg')}}" class="img-responsive" alt=""/>
-        </div>
-        <div class="col-md-2 col_1">
-            <img src="{{asset('images/w3.jpg')}}" class="img-responsive" alt=""/>
-        </div>
-        <div class="col-md-2 col_1">
-            <img src="{{asset('images/w4.jpg')}}" class="img-responsive" alt=""/>
-        </div>
-        <div class="col-md-2 col_1">
-            <h4>People</h4>
-        </div>
-        <div class="col-md-2 col_1">
-            <img src="{{asset('images/pic20.jpg')}}" class="img-responsive" alt=""/>
-        </div>
-        <div class="col-md-2 col_1">
-            <img src="{{asset('images/pic21.jpg')}}" class="img-responsive" alt=""/>
-        </div>
-        <div class="col-md-2 col_1">
-            <img src="{{asset('images/pic22.jpg')}}" class="img-responsive" alt=""/>
-        </div>
-        <div class="col-md-2 col_1">
-            <img src="{{asset('images/pic23.jpg')}}" class="img-responsive" alt=""/>
-        </div>
-        <div class="col-md-2 col_1">
-            <img src="{{asset('images/pic24.jpg')}}" class="img-responsive" alt=""/>
-        </div>
-        <div class="clearfix"> </div>
+        @if(isset($categoriesWithProducts))
+            @foreach($categoriesWithProducts as $categoryWithProducts)
+                @php /** @var \App\Models\ShopCategory $categoryWithProducts*/ @endphp
+                @if(!$categoryWithProducts->is_published)
+                    <div class="col-md-2 col_1">
+                        <a href="{{ route('shop.category', $categoryWithProducts->slug) }}">
+                            <h4>{{ $categoryWithProducts->title }}</h4></a>
+                    </div>
+                    @php $iter = 1 @endphp
+                    @foreach($categoryWithProducts->products as $product)
+
+                        <div class="col-md-2 col_1">
+                            <a href="{{ route('shop.product', [$categoryWithProducts->slug, $product->slug]) }}"><img
+                                        src="{{asset($product->thumb_img)}}" class="img-responsive" alt=""/></a>
+                        </div>
+                        @php $iter++ @endphp
+                        @if($iter > 5 )
+                            @break
+                        @endif
+                    @endforeach
+                @endif
+                <div class="clearfix"></div>
+            @endforeach
+        @else
+            Тут ничего нет, пока что
+        @endif
     </div>
 @endsection

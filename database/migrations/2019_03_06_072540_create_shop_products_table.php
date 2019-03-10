@@ -27,6 +27,8 @@ class CreateShopProductsTable extends Migration
             $table->text('preview_img');
             $table->text('original_img');
 
+            $table->text('description');
+
             $table->boolean('is_published')->default(false);
             $table->timestamp('published_at')->nullable();
 
