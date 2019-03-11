@@ -9,6 +9,7 @@ class CategoryController extends BaseController
 {
     public function show($category_slug)
     {
-        dd(__METHOD__, $category_slug);
+        //dd(__METHOD__, $category_slug);
+        return view('shop.category.index');
     }
 }
