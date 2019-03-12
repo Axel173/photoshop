@@ -30,7 +30,7 @@ class ComposerServiceProvider extends ServiceProvider
     {
         $this->categories = new ShopCategoryRepository();
         // Using Closure based composers...
-        View::composer('layouts.shop.app', function ($view) {
+        View::composer('*', function ($view) {
             $view->with(['categories' => $this->categories->getAll()]);
         });
     }

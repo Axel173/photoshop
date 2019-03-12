@@ -14,14 +14,12 @@ class HomeController extends BaseController
     /**
      * @var ShopProductRepository;
      */
-    private $shopProductRepository;
     private $shopCategoryRepository;
 
     public function __construct()
     {
         parent::__construct();
 
-        $this->shopProductRepository = app(ShopProductRepository::class);
         $this->shopCategoryRepository = app(ShopCategoryRepository::class);
     }
 

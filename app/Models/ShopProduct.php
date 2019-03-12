@@ -11,6 +11,6 @@ class ShopProduct extends Model
 
     public function category()
     {
-        return $this->hasOne(ShopCategory::class);
+        return $this->belongsTo(ShopCategory::class);
     }
 }

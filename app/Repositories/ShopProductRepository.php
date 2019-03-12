@@ -17,9 +17,22 @@ class ShopProductRepository extends CoreRepository
         return Model::class;
     }
 
+    public function getProduct($product_slug)
+    {
+        return $this->startConditions()
+            ->with(['category'])
+            ->where('slug', $product_slug)
+            ->first();
+    }
+    public function getProductsWithPaginate($per_page)
+    {
+        return $this->startConditions()
+            ->paginate($per_page);
+    }
+
     public function getAllWithCategories()
     {
-        $columns = [
+        /*$columns = [
             'id',
             'title',
             'slug',
@@ -39,6 +52,6 @@ class ShopProductRepository extends CoreRepository
             ])
             ->get();
 
-        return $result;
+        return $result;*/
     }
 }

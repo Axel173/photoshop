@@ -28,7 +28,7 @@
     </div>
     <div class="grid_1">
         <h3>Over 42 Million Stock Images, Vectors, Footage and Audio Clips</h3>
-        @if(isset($categoriesWithProducts))
+        @if(!empty($categoriesWithProducts))
             @foreach($categoriesWithProducts as $categoryWithProducts)
                 @php /** @var \App\Models\ShopCategory $categoryWithProducts*/ @endphp
                 @if(!$categoryWithProducts->is_published)
@@ -40,7 +40,7 @@
                     @foreach($categoryWithProducts->products as $product)
 
                         <div class="col-md-2 col_1">
-                            <a href="{{ route('shop.product', [$categoryWithProducts->slug, $product->slug]) }}"><img
+                            <a href="{{ route('shop.product', [$product->slug]) }}"><img
                                         src="{{asset($product->thumb_img)}}" class="img-responsive" alt=""/></a>
                         </div>
                         @php $iter++ @endphp

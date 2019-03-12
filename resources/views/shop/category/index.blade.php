@@ -7,8 +7,10 @@
                 <section class="sky-form">
                     <h4>Collections</h4>
                     <div class="col col-4">
-                        <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>All images</label>
-                    </div><div class="col col-4">
+                        <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>All
+                            images</label>
+                    </div>
+                    <div class="col col-4">
                         <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Standard</label>
                         <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Following</label>
                         <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Lorem Ipsum</label>
@@ -19,10 +21,12 @@
                 <section class="sky-form">
                     <h4>Freshness</h4>
                     <div class="col col-4">
-                        <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Any time</label>
+                        <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Any
+                            time</label>
                         <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Past 3 months</label>
                         <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Past month</label>
-                    </div><div class="col col-4">
+                    </div>
+                    <div class="col col-4">
                         <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Past week</label>
                         <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Past 3 days</label>
                         <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Any time</label>
@@ -59,7 +63,8 @@
                         <label class="radio"><input type="radio" name="radio" checked=""><i></i>60 % and above</label>
                         <label class="radio"><input type="radio" name="radio"><i></i>50 % and above</label>
                         <label class="radio"><input type="radio" name="radio"><i></i>40 % and above</label>
-                    </div><div class="col col-4">
+                    </div>
+                    <div class="col col-4">
                         <label class="radio"><input type="radio" name="radio"><i></i>30 % and above</label>
                         <label class="radio"><input type="radio" name="radio"><i></i>20 % and above</label>
                         <label class="radio"><input type="radio" name="radio"><i></i>10 % and above</label>
@@ -69,230 +74,62 @@
         </div>
         <div class="col-md-10 sap_tabs">
             <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
-                <ul class="resp-tabs-list">
+                @if (!empty($categories))
+                    <ul class="resp-tabs-list">
+                        <li class="resp-tab-item {{ (!Route::current()->parameter("category_slug")) ? 'resp-tab-active' : '' }}"
+                            aria-controls="tab_item-0" role="tab">
+                            <a href="{{ route('shop.category') }}"><span>Все</span></a>
+                        </li>
+                        {{--<li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>What's Hot</span></li>--}}
+                        @php
+                            $category_id = 0;
+                            $class = '';
+                        @endphp
+                        @foreach($categories as $category)
+                            @php
+                                    if(Route::current()->parameter("category_slug") ===  $category->slug){
+                                        $category_id = $category->id;
+                                        $class = 'resp-tab-active';
+                                    }
+                            @endphp
+                            <li class="resp-tab-item {{ (Route::current()->parameter("category_slug") ===  $category->slug) ? 'resp-tab-active' : '' }}"
+                                aria-controls="tab_item-{{ $category->id }}" role="tab">
+                                <a href="{{ route('shop.category', $category->slug) }}"><span>{{ $category->title }}</span></a>
+                            </li>
+                        @endforeach
+                        <div class="clearfix"></div>
+                    </ul>
+                @else
+                    Тут сейчас пусто
+                @endif
+                {{--<ul class="resp-tabs-list">
                     <li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>What's Hot</span></li>
                     <li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>Designers</span></li>
                     <li class="resp-tab-item" aria-controls="tab_item-2" role="tab"><span>Featured</span></li>
                     <li class="resp-tab-item" aria-controls="tab_item-3" role="tab"><span>Featured</span></li>
                     <div class="clearfix"></div>
-                </ul>
+                </ul>--}}
                 <div class="resp-tabs-container">
-                    <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
-                        <ul class="tab_img">
-                            <li><a href="single.html">
-                                    <img src="{{ asset('images/pic1.jpg') }}" class="img-responsive" alt=""/>
-                                    <div class="tab_desc">
-                                        <p>There are many variations</p>
-                                        <h4>#25478921</h4>
-                                    </div>
-                                </a></li>
-                            <li><a href="single.html">
-                                    <img src="{{ asset('images/pic2.jpg') }}" class="img-responsive" alt=""/>
-                                    <div class="tab_desc">
-                                        <p>There are many variations</p>
-                                        <h4>#25478921</h4>
-                                    </div>
-                                </a></li>
-                            <li><a href="single.html">
-                                    <img src="{{ asset('images/pic3.jpg') }}" class="img-responsive" alt=""/>
-                                    <div class="tab_desc">
-                                        <p>There are many variations</p>
-                                        <h4>#25478921</h4>
-                                    </div>
-                                </a></li>
-                            <li><a href="single.html">
-                                    <img src="{{ asset('images/pic4.jpg') }}" class="img-responsive" alt=""/>
-                                    <div class="tab_desc">
-                                        <p>There are many variations</p>
-                                        <h4>#25478921</h4>
-                                    </div>
-                                </a></li>
-                            <li><a href="single.html">
-                                    <img src="{{ asset('images/pic5.jpg') }}" class="img-responsive" alt=""/>
-                                    <div class="tab_desc">
-                                        <p>There are many variations</p>
-                                        <h4>#25478921</h4>
-                                    </div>
-                                </a></li>
-                            <li class="last"><a href="single.html">
-                                    <img src="{{ asset('images/pic6.jpg') }}" class="img-responsive" alt=""/>
-                                    <div class="tab_desc">
-                                        <p>There are many variations</p>
-                                        <h4>#25478921</h4>
-                                    </div>
-                                </a></li>
-                            <li><a href="single.html">
-                                    <img src="{{ asset('images/pic6.jpg') }}" class="img-responsive" alt=""/>
-                                    <div class="tab_desc">
-                                        <p>There are many variations</p>
-                                        <h4>#25478921</h4>
-                                    </div>
-                                </a></li>
-                            <li><a href="single.html">
-                                    <img src="{{ asset('images/pic7.jpg') }}" class="img-responsive" alt=""/>
-                                    <div class="tab_desc">
-                                        <p>There are many variations</p>
-                                        <h4>#25478921</h4>
-                                    </div>
-                                </a></li>
-                            <li><a href="single.html">
-                                    <img src="{{ asset('images/pic8.jpg') }}" class="img-responsive" alt=""/>
-                                    <div class="tab_desc">
-                                        <p>There are many variations</p>
-                                        <h4>#25478921</h4>
-                                    </div>
-                                </a></li>
-                            <li><a href="single.html">
-                                    <img src="{{ asset('images/pic9.jpg') }}" class="img-responsive" alt=""/>
-                                    <div class="tab_desc">
-                                        <p>There are many variations</p>
-                                        <h4>#25478921</h4>
-                                    </div>
-                                </a></li>
-                            <li><a href="single.html">
-                                    <img src="{{ asset('images/pic10.jpg') }}" class="img-responsive" alt=""/>
-                                    <div class="tab_desc">
-                                        <p>There are many variations</p>
-                                        <h4>#25478921</h4>
-                                    </div>
-                                </a></li>
-                            <li class="last"><a href="single.html">
-                                    <img src="{{ asset('images/pic11.jpg') }}" class="img-responsive" alt=""/>
-                                    <div class="tab_desc">
-                                        <p>There are many variations</p>
-                                        <h4>#25478921</h4>
-                                    </div>
-                                </a></li>
-                            <li><a href="single.html">
-                                    <img src="{{ asset('images/pic12.jpg') }}" class="img-responsive" alt=""/>
-                                    <div class="tab_desc">
-                                        <p>There are many variations</p>
-                                        <h4>#25478921</h4>
-                                    </div>
-                                </a></li>
-                            <li><a href="single.html">
-                                    <img src="{{ asset('images/pic13.jpg') }}" class="img-responsive" alt=""/>
-                                    <div class="tab_desc">
-                                        <p>There are many variations</p>
-                                        <h4>#25478921</h4>
-                                    </div>
-                                </a></li>
-                            <li><a href="single.html">
-                                    <img src="{{ asset('images/pic14.jpg') }}" class="img-responsive" alt=""/>
-                                    <div class="tab_desc">
-                                        <p>There are many variations</p>
-                                        <h4>#25478921</h4>
-                                    </div>
-                                </a></li>
-                            <li><a href="single.html">
-                                    <img src="{{ asset('images/pic15.jpg') }}" class="img-responsive" alt=""/>
-                                    <div class="tab_desc">
-                                        <p>There are many variations</p>
-                                        <h4>#25478921</h4>
-                                    </div>
-                                </a></li>
-                            <li><a href="single.html">
-                                    <img src="{{ asset('images/pic16.jpg') }}" class="img-responsive" alt=""/>
-                                    <div class="tab_desc">
-                                        <p>There are many variations</p>
-                                        <h4>#25478921</h4>
-                                    </div>
-                                </a></li>
-                            <li class="last"><a href="single.html">
-                                    <img src="{{ asset('images/pic17.jpg') }}" class="img-responsive" alt=""/>
-                                    <div class="tab_desc">
-                                        <p>There are many variations</p>
-                                        <h4>#25478921</h4>
-                                    </div>
-                                </a></li>
-                            <li><a href="single.html">
-                                    <img src="{{ asset('images/pic18.jpg') }}" class="img-responsive" alt=""/>
-                                    <div class="tab_desc">
-                                        <p>There are many variations</p>
-                                        <h4>#25478921</h4>
-                                    </div>
-                                </a></li>
-                            <li><a href="single.html">
-                                    <img src="{{ asset('images/pic19.jpg') }}" class="img-responsive" alt=""/>
-                                    <div class="tab_desc">
-                                        <p>There are many variations</p>
-                                        <h4>#25478921</h4>
-                                    </div>
-                                </a></li>
-                            <li><a href="single.html">
-                                    <img src="{{ asset('images/pic20.jpg') }}" class="img-responsive" alt=""/>
-                                    <div class="tab_desc">
-                                        <p>There are many variations</p>
-                                        <h4>#25478921</h4>
-                                    </div>
-                                </a></li>
-                            <li><a href="single.html">
-                                    <img src="{{ asset('images/pic21.jpg') }}" class="img-responsive" alt=""/>
-                                    <div class="tab_desc">
-                                        <p>There are many variations</p>
-                                        <h4>#25478921</h4>
-                                    </div>
-                                </a></li>
-                            <li><a href="single.html">
-                                    <img src="{{ asset('images/pic22.jpg') }}" class="img-responsive" alt=""/>
-                                    <div class="tab_desc">
-                                        <p>There are many variations</p>
-                                        <h4>#25478921</h4>
-                                    </div>
-                                </a></li>
-                            <li class="last"><a href="single.html">
-                                    <img src="{{ asset('images/pic23.jpg') }}" class="img-responsive" alt=""/>
-                                    <div class="tab_desc">
-                                        <p>There are many variations</p>
-                                        <h4>#25478921</h4>
-                                    </div>
-                                </a></li>
-                            <li><a href="single.html">
-                                    <img src="{{ asset('images/pic24.jpg') }}" class="img-responsive" alt=""/>
-                                    <div class="tab_desc">
-                                        <p>There are many variations</p>
-                                        <h4>#25478921</h4>
-                                    </div>
-                                </a></li>
-                            <li><a href="single.html">
-                                    <img src="{{ asset('images/pic25.jpg') }}" class="img-responsive" alt=""/>
-                                    <div class="tab_desc">
-                                        <p>There are many variations</p>
-                                        <h4>#25478921</h4>
-                                    </div>
-                                </a></li>
-                            <li><a href="single.html">
-                                    <img src="{{ asset('images/pic26.jpg') }}" class="img-responsive" alt=""/>
-                                    <div class="tab_desc">
-                                        <p>There are many variations</p>
-                                        <h4>#25478921</h4>
-                                    </div>
-                                </a></li>
-                            <li><a href="single.html">
-                                    <img src="{{ asset('images/pic27.jpg') }}" class="img-responsive" alt=""/>
-                                    <div class="tab_desc">
-                                        <p>There are many variations</p>
-                                        <h4>#25478921</h4>
-                                    </div>
-                                </a></li>
-                            <li><a href="single.html">
-                                    <img src="{{ asset('images/pic28.jpg') }}" class="img-responsive" alt=""/>
-                                    <div class="tab_desc">
-                                        <p>There are many variations</p>
-                                        <h4>#25478921</h4>
-                                    </div>
-                                </a></li>
-                            <li class="last"><a href="single.html">
-                                    <img src="{{ asset('images/pic29.jpg') }}" class="img-responsive" alt=""/>
-                                    <div class="tab_desc">
-                                        <p>There are many variations</p>
-                                        <h4>#25478921</h4>
-                                    </div>
-                                </a></li>
-                            <div class="clearfix"></div>
-                        </ul>
+                    @php
+                        //dump($products);
+                    @endphp
+                    <div class="tab-2 resp-tab-content resp-tab-content-active" aria-labelledby="tab_item-{{ $category_id }}">
+                        @if($products)
+                            <ul class="tab_img">
+                                @foreach($products as $product)
+                                    <li><a href="{{ route('shop.product', $product->slug) }}">
+                                            <img src="{{ asset($product->thumb_img) }}" class="img-responsive" alt=""/>
+                                            <div class="tab_desc">
+                                                <p>{{ $product->title }}</p>
+                                                <h4>#{{ $product->id }}</h4>
+                                            </div>
+                                        </a></li>
+                                @endforeach
+                                @endif
+                                <div class="clearfix"></div>
+                            </ul>
                     </div>
-                    <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
+                    {{--<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
                         <ul class="tab_img">
                             <li><a href="single.html">
                                     <img src="{{ asset('images/pic30.jpg') }}" class="img-responsive" alt=""/>
@@ -821,7 +658,7 @@
                                         <p>There are many variations</p>
                                         <h4>#25478921</h4>
                                     </div>
-                                </a> </li>
+                                </a></li>
                             <li><a href="single.html">
                                     <img src="{{ asset('images/pic14.jpg') }}" class="img-responsive" alt=""/>
                                     <div class="tab_desc">
@@ -936,10 +773,17 @@
                                 </a></li>
                             <div class="clearfix"></div>
                         </ul>
-                    </div>
+                    </div>--}}
                 </div>
             </div>
-            <ul class="pagination">
+            @if($products->total() > $products->count())
+                <br>
+                <ul class="pagination">
+                    {{ $products->links() }}
+                </ul>
+
+            @endif
+            {{--<ul class="pagination">
                 <li>
                     <a href="#" aria-label="Previous">
                         <span aria-hidden="true">«</span>
@@ -955,8 +799,8 @@
                         <span aria-hidden="true">»</span>
                     </a>
                 </li>
-            </ul>
+            </ul>--}}
         </div>
-        <div class="clearfix"> </div>
+        <div class="clearfix"></div>
     </div>
 @endsection

@@ -40,6 +40,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[0]) . '/' . Str::slug($categories_arr[0]) . '.jpg',
                 'description' => Str::slug($categories_arr[0]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             [
                 'category_id' => 1,
@@ -52,6 +53,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[0]) . '/' . Str::slug($categories_arr[0]) . '1.jpg',
                 'description' => Str::slug($categories_arr[0]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             [
                 'category_id' => 1,
@@ -64,6 +66,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[0]) . '/' . Str::slug($categories_arr[0]) . '2.jpg',
                 'description' => Str::slug($categories_arr[0]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             //Архитектура
             [
@@ -77,6 +80,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[1]) . '/' . Str::slug($categories_arr[1]) . '.jpg',
                 'description' => Str::slug($categories_arr[1]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             [
                 'category_id' => 2,
@@ -89,6 +93,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[1]) . '/' . Str::slug($categories_arr[1]) . '1.jpg',
                 'description' => Str::slug($categories_arr[1]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             //Города
             [
@@ -102,6 +107,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[2]) . '/' . Str::slug($categories_arr[2]) . '.jpg',
                 'description' => Str::slug($categories_arr[2]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             [
                 'category_id' => 3,
@@ -114,6 +120,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[2]) . '/' . Str::slug($categories_arr[2]) . '1.jpg',
                 'description' => Str::slug($categories_arr[2]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             [
                 'category_id' => 3,
@@ -126,6 +133,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[2]) . '/' . Str::slug($categories_arr[2]) . '2.jpg',
                 'description' => Str::slug($categories_arr[2]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             //Электроника
             [
@@ -139,6 +147,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[3]) . '/' . Str::slug($categories_arr[3]) . '.jpg',
                 'description' => Str::slug($categories_arr[3]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             [
                 'category_id' => 4,
@@ -151,6 +160,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[3]) . '/' . Str::slug($categories_arr[3]) . '1.jpg',
                 'description' => Str::slug($categories_arr[3]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             [
                 'category_id' => 4,
@@ -163,6 +173,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[3]) . '/' . Str::slug($categories_arr[3]) . '2.jpg',
                 'description' => Str::slug($categories_arr[3]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             //Декорации
             [
@@ -176,6 +187,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[4]) . '/' . Str::slug($categories_arr[4]) . '.jpg',
                 'description' => Str::slug($categories_arr[4]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             [
                 'category_id' => 5,
@@ -188,6 +200,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[4]) . '/' . Str::slug($categories_arr[4]) . '1.jpg',
                 'description' => Str::slug($categories_arr[4]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             [
                 'category_id' => 5,
@@ -200,6 +213,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[4]) . '/' . Str::slug($categories_arr[4]) . '2.jpg',
                 'description' => Str::slug($categories_arr[4]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             //Еда и Напитки
             [
@@ -213,6 +227,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[5]) . '/' . Str::slug($categories_arr[5]) . '.jpg',
                 'description' => Str::slug($categories_arr[5]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             [
                 'category_id' => 6,
@@ -225,6 +240,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[5]) . '/' . Str::slug($categories_arr[5]) . '1.jpg',
                 'description' => Str::slug($categories_arr[5]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             [
                 'category_id' => 6,
@@ -237,6 +253,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[5]) . '/' . Str::slug($categories_arr[5]) . '2.jpg',
                 'description' => Str::slug($categories_arr[5]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             [
                 'category_id' => 6,
@@ -249,6 +266,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[5]) . '/' . Str::slug($categories_arr[5]) . '3.jpg',
                 'description' => Str::slug($categories_arr[5]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             //Природа
             [
@@ -262,6 +280,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[6]) . '/' . Str::slug($categories_arr[6]) . '.jpg',
                 'description' => Str::slug($categories_arr[6]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             [
                 'category_id' => 7,
@@ -274,6 +293,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[6]) . '/' . Str::slug($categories_arr[6]) . '1.jpg',
                 'description' => Str::slug($categories_arr[6]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             [
                 'category_id' => 7,
@@ -286,6 +306,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[6]) . '/' . Str::slug($categories_arr[6]) . '2.jpg',
                 'description' => Str::slug($categories_arr[6]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             //Люди
             [
@@ -299,6 +320,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[7]) . '/' . Str::slug($categories_arr[7]) . '.jpg',
                 'description' => Str::slug($categories_arr[7]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             [
                 'category_id' => 8,
@@ -311,6 +333,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[7]) . '/' . Str::slug($categories_arr[7]) . '1.jpg',
                 'description' => Str::slug($categories_arr[7]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             [
                 'category_id' => 8,
@@ -323,6 +346,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[7]) . '/' . Str::slug($categories_arr[7]) . '2.jpg',
                 'description' => Str::slug($categories_arr[7]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             [
                 'category_id' => 8,
@@ -335,6 +359,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[7]) . '/' . Str::slug($categories_arr[7]) . '3.jpg',
                 'description' => Str::slug($categories_arr[7]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             //Спорт
             [
@@ -348,6 +373,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[8]) . '/' . Str::slug($categories_arr[8]) . '.jpg',
                 'description' => Str::slug($categories_arr[8]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             [
                 'category_id' => 9,
@@ -360,6 +386,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[8]) . '/' . Str::slug($categories_arr[8]) . '1.jpg',
                 'description' => Str::slug($categories_arr[8]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             [
                 'category_id' => 9,
@@ -372,6 +399,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[8]) . '/' . Str::slug($categories_arr[8]) . '2.jpg',
                 'description' => Str::slug($categories_arr[8]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             [
                 'category_id' => 9,
@@ -384,6 +412,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[8]) . '/' . Str::slug($categories_arr[8]) . '3.jpg',
                 'description' => Str::slug($categories_arr[8]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             [
                 'category_id' => 9,
@@ -396,6 +425,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[8]) . '/' . Str::slug($categories_arr[8]) . '4.jpg',
                 'description' => Str::slug($categories_arr[8]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             [
                 'category_id' => 9,
@@ -408,6 +438,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[8]) . '/' . Str::slug($categories_arr[8]) . '5.jpg',
                 'description' => Str::slug($categories_arr[8]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             [
                 'category_id' => 9,
@@ -420,6 +451,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[8]) . '/' . Str::slug($categories_arr[8]) . '6.jpg',
                 'description' => Str::slug($categories_arr[8]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             //Транспорт
             [
@@ -433,6 +465,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[9]) . '/' . Str::slug($categories_arr[9]) . '.jpg',
                 'description' => Str::slug($categories_arr[9]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             [
                 'category_id' => 10,
@@ -445,6 +478,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[9]) . '/' . Str::slug($categories_arr[9]) . '1.jpg',
                 'description' => Str::slug($categories_arr[9]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             [
                 'category_id' => 10,
@@ -457,6 +491,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[9]) . '/' . Str::slug($categories_arr[9]) . '2.jpg',
                 'description' => Str::slug($categories_arr[9]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             [
                 'category_id' => 10,
@@ -469,6 +504,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[9]) . '/' . Str::slug($categories_arr[9]) . '3.jpg',
                 'description' => Str::slug($categories_arr[9]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             [
                 'category_id' => 10,
@@ -481,6 +517,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[9]) . '/' . Str::slug($categories_arr[9]) . '4.jpg',
                 'description' => Str::slug($categories_arr[9]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             [
                 'category_id' => 10,
@@ -493,6 +530,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[9]) . '/' . Str::slug($categories_arr[9]) . '5.jpg',
                 'description' => Str::slug($categories_arr[9]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             //Места
             [
@@ -506,6 +544,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[10]) . '/' . Str::slug($categories_arr[10]) . '.jpg',
                 'description' => Str::slug($categories_arr[10]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             [
                 'category_id' => 11,
@@ -518,6 +557,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[10]) . '/' . Str::slug($categories_arr[10]) . '1.jpg',
                 'description' => Str::slug($categories_arr[10]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             [
                 'category_id' => 11,
@@ -530,6 +570,7 @@ class ShopProductsTableSeeder extends Seeder
                 'original_img' => 'images/products/' . Str::slug($categories_arr[10]) . '/' . Str::slug($categories_arr[10]) . '2.jpg',
                 'description' => Str::slug($categories_arr[10]) . 'description',
                 'is_published' => 1,
+                'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
             ],
             
         ];

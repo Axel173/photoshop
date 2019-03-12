@@ -42,6 +42,26 @@ class ShopCategoryRepository extends CoreRepository
         return $result;
     }
 
+    public function getCategory($category_slug)
+    {
+        /*$columns = [
+            'id',
+            'title',
+            'slug',
+            'is_published',
+            'published_at',
+            'user_id',
+            'category_id',
+        ];*/
+        $result = $this->startConditions()
+            ->orderBy('id', 'DESC')
+            ->where('slug', $category_slug)
+            ->first();
+
+
+        return $result;
+    }
+
     public function getAll()
     {
         $columns = [
