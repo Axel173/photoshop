@@ -18,6 +18,8 @@ $groupData = [
 Route::group($groupData, function () {
     Route::get('/', 'HomeController@index');
 
+    Route::get('search/', 'SearchController@search')->name('shop.search');
+
     Route::get('category/{category_slug?}/', 'CategoryController@show')->name('shop.category');
 
     Route::get('product/{product_slug}/','ProductController@show')->name('shop.product');

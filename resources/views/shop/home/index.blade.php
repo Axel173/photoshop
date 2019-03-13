@@ -8,18 +8,20 @@
                 <div class="search">
                     <ul class="nav1">
                         <li id="search">
-                            <form action="" method="get">
-                                <input type="text" name="search_text" id="search_text" placeholder="Search"/>
-                                <input type="button" name="search_button" id="search_button">
+                            <form action="{{ route('shop.search') }}" method="get">
+                                <input type="text" name="query" id="search_text" placeholder="Search"/>
+                                <button id="search_button"></button>
                             </form>
                         </li>
                         <li id="options">
-                            <a href="#">All Images</a>
-                            <ul class="subnav">
-                                <li><a href="#">Photography</a></li>
-                                <li><a href="#">Illustrations</a></li>
-                                <li><a href="#">Vector</a></li>
-                            </ul>
+                            <a href="#" data-category="">All Categories</a>
+                            @if (!empty($categories))
+                                <ul class="subnav">
+                                    @foreach($categories as $category)
+                                        <li><a data-category="{{ $category->slug }}">{{ $category->title }}</a></li>
+                                    @endforeach
+                                </ul>
+                            @endif
                         </li>
                     </ul>
                 </div>

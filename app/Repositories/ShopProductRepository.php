@@ -30,6 +30,12 @@ class ShopProductRepository extends CoreRepository
             ->paginate($per_page);
     }
 
+    public function getSearchProductsWithPaginate($value, $per_page)
+    {
+        $result = $this->startConditions()::search($value)->paginate($per_page);
+        return $result;
+    }
+
     public function getAllWithCategories()
     {
         /*$columns = [
