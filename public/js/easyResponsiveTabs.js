@@ -42,13 +42,16 @@
                 var $tabItemh2;
                 $respTabs.find('.resp-tab-content').before("<h2 class='resp-accordion' role='tab'><span class='resp-arrow'></span></h2>");
 
-                var itemCount = 0;
+                //console.log();
+                //var itemCount = 0;
                 $respTabs.find('.resp-accordion').each(function () {
+                    itemCount = $('.resp-tabs-list').find('.resp-tab-active').index();
                     $tabItemh2 = $(this);
                     var innertext = $respTabs.find('.resp-tab-item:eq(' + itemCount + ')').text();
+                    console.log(innertext);
                     $respTabs.find('.resp-accordion:eq(' + itemCount + ')').append(innertext);
                     $tabItemh2.attr('aria-controls', 'tab_item-' + (itemCount));
-                    itemCount++;
+                    //itemCount++;
                 });
 
                 //Assigning the 'aria-controls' to Tab items
