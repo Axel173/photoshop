@@ -2,6 +2,9 @@
 
 @section('content')
     <div class="single">
+        @php
+            //dump($product)
+        @endphp
         @if(!empty($product))
             <div class="container">
                 <div class="single_box1">
@@ -22,7 +25,17 @@
                             <li><a href="#">2XL</a></li>
                             <li><a href="#">3XL</a></li>
                         </ul>--}}
-                        <a class="btn_3" href="#price.html">Download this Photo</a>
+                        @if($product->price)
+                            {{--<p class="movie_option"><strong>Photo : </strong>{{ $product->id }}</p>--}}
+                            @if($product->discount > 0)
+                                <p class="movie_option"><strong>Old price : </strong><span style="text-decoration: line-through;">{{ $product->price }} RUB</span></p>
+                                <p class="movie_option"><strong>Price with discount : </strong>{{ $product->price * ((100 - $product->discount) / 100) }} RUB - <span style="color: red;">{{ $product->discount }}%</span></p>
+                            @else
+                                <p class="movie_option"><strong>Price : </strong>{{ $product->price }} RUB</p>
+                            @endif
+                            <a class="btn_3" href="#price.html">Download this Photo</a>
+                        @endif
+
                         @if($product->published_at)
                             <p class="movie_option"><strong>Photo : </strong>{{ $product->id }}</p>
                         @endif

@@ -23,7 +23,7 @@ class CategoriesComposer
     public function __construct(ShopCategoryRepository $categories)
     {
         // Dependencies automatically resolved by service container...
-        $this->categories = $categories;
+        //$this->categories = $categories;
     }
 
     /**
@@ -34,6 +34,6 @@ class CategoriesComposer
      */
     public function compose(View $view)
     {
-        $view->with('categories', $this->categories->getAll());
+        //$view->with('categories', $this->categories->getAll());
     }
 }

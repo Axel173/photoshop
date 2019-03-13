@@ -42,21 +42,14 @@ class ShopCategoryRepository extends CoreRepository
         return $result;
     }
 
-    public function getCategory($category_slug)
+    public function getCategoryWithProductsPaginate($category_slug, $per_page)
     {
-        /*$columns = [
-            'id',
-            'title',
-            'slug',
-            'is_published',
-            'published_at',
-            'user_id',
-            'category_id',
-        ];*/
         $result = $this->startConditions()
             ->orderBy('id', 'DESC')
             ->where('slug', $category_slug)
-            ->first();
+            ->first()
+            ->products()
+            ->paginate($per_page);
 
 
         return $result;

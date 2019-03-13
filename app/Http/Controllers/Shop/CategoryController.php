@@ -28,7 +28,7 @@ class CategoryController extends BaseController
         if ($category_slug === '') {
             $products = $this->shopProductRepository->getProductsWithPaginate(10);
         } else {
-            $products = $this->shopCategoryRepository->getCategory($category_slug)->products()->paginate(10);
+            $products = $this->shopCategoryRepository->getCategoryWithProductsPaginate($category_slug, 10);
         }
         return view('shop.category.index', compact('products'));
     }

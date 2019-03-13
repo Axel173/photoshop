@@ -3,7 +3,7 @@
 @section('content')
     <div class="stock_box">
         <div class="col-md-2 stock_left">
-            <div class="w_sidebar">
+            {{--<div class="w_sidebar">
                 <section class="sky-form">
                     <h4>Collections</h4>
                     <div class="col col-4">
@@ -70,7 +70,7 @@
                         <label class="radio"><input type="radio" name="radio"><i></i>10 % and above</label>
                     </div>
                 </section>
-            </div>
+            </div>--}}
         </div>
         <div class="col-md-10 sap_tabs">
             <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
@@ -120,8 +120,15 @@
                                     <li><a href="{{ route('shop.product', $product->slug) }}">
                                             <img src="{{ asset($product->thumb_img) }}" class="img-responsive" alt=""/>
                                             <div class="tab_desc">
-                                                <p>{{ $product->title }}</p>
-                                                <h4>#{{ $product->id }}</h4>
+                                                <p>{{ $product->title }} #{{ $product->id }}</p>
+                                                <h4> @if($product->price)
+                                                        {{--<p class="movie_option"><strong>Photo : </strong>{{ $product->id }}</p>--}}
+                                                        @if($product->discount > 0)
+                                                            {{ $product->price * ((100 - $product->discount) / 100) }} RUB - <span style="color: red;">{{ $product->discount }}%</span>
+                                                        @else
+                                                            {{ $product->price }} RUB
+                                                        @endif
+                                                    @endif</h4>
                                             </div>
                                         </a></li>
                                 @endforeach

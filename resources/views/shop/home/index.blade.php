@@ -40,7 +40,7 @@
                     @foreach($categoryWithProducts->products as $product)
 
                         <div class="col-md-2 col_1">
-                            <a href="{{ route('shop.product', [$product->slug]) }}"><img
+                            <a href="{{ route('shop.product', [$categoryWithProducts->slug, $product->slug]) }}"><img
                                         src="{{asset($product->thumb_img)}}" class="img-responsive" alt=""/></a>
                         </div>
                         @php $iter++ @endphp
