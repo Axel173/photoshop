@@ -24,6 +24,17 @@ class ShopProductRepository extends CoreRepository
             ->where('slug', $product_slug)
             ->first();
     }
+
+    public function getRandomProducts($product_slug)
+    {
+        return $this->startConditions()
+            ->where('slug', '!=', $product_slug)
+            ->inRandomOrder()
+            ->with(['category'])
+            ->take(5)
+            ->get();
+    }
+
     public function getProductsWithPaginate($per_page)
     {
         return $this->startConditions()

@@ -25,11 +25,14 @@ class ProductController extends BaseController
         $product = $this
             ->shopProductRepository
             ->getProduct($product_slug);
+        $products = $this
+            ->shopProductRepository
+            ->getRandomProducts($product_slug);
 
         if (empty($product)) {
             abort(404);
         }
 
-        return view('shop.product.index', compact('product'));
+        return view('shop.product.index', compact('product', 'products'));
     }
 }

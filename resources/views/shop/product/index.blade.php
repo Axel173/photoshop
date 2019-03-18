@@ -28,12 +28,15 @@
                         @if($product->price)
                             {{--<p class="movie_option"><strong>Photo : </strong>{{ $product->id }}</p>--}}
                             @if($product->discount > 0)
-                                <p class="movie_option"><strong>Old price : </strong><span style="text-decoration: line-through;">{{ $product->price }} RUB</span></p>
-                                <p class="movie_option"><strong>Price with discount : </strong>{{ $product->price * ((100 - $product->discount) / 100) }} RUB - <span style="color: red;">{{ $product->discount }}%</span></p>
+                                <p class="movie_option"><strong>Old price : </strong><span
+                                            style="text-decoration: line-through;">{{ $product->price }} RUB</span></p>
+                                <p class="movie_option"><strong>Price with discount
+                                        : </strong>{{ $product->price * ((100 - $product->discount) / 100) }} RUB -
+                                    <span style="color: red;">{{ $product->discount }}%</span></p>
                             @else
                                 <p class="movie_option"><strong>Price : </strong>{{ $product->price }} RUB</p>
                             @endif
-                            <a class="btn_3" href="#price.html">Download this Photo</a>
+                            <a class="btn_3" href="{{ route('shop.cart.add', $product->slug) }}">Add to cart</a>
                         @endif
 
                         @if($product->published_at)
@@ -81,19 +84,17 @@
                 </ul>
                 <div class="tags">
                     <h4 class="tag_head">Similar Images</h4>
-                    <ul class="tags_images">
-                        <li><a href="#"><img src="{{asset('images/pic40.jpg') }}" class="img-responsive" alt=""/></a>
-                        </li>
-                        <li><a href="#"><img src="{{asset('images/pic41.jpg') }}" class="img-responsive" alt=""/></a>
-                        </li>
-                        <li><a href="#"><img src="{{asset('images/pic42.jpg') }}" class="img-responsive" alt=""/></a>
-                        </li>
-                        <li><a href="#"><img src="{{asset('images/pic43.jpg') }}" class="img-responsive" alt=""/></a>
-                        </li>
-                        <li class="last"><a href="#"><img src="{{asset('images/pic39.jpg') }}" class="img-responsive"
-                                                          alt=""/></a></li>
+                    @if($products)
+                        <ul class="tags_images">
+                            @foreach($products as $product)
+                                <li><a href="{{ route('shop.product', $product->slug) }}"><img
+                                                src="{{ asset($product->thumb_img) }}" class="img-responsive"
+                                                alt=""/></a>
+                                    @endforeach
+
+                        </ul>
                         <div class="clearfix"></div>
-                    </ul>
+                    @endif
                 </div>
             </div>
         @endif

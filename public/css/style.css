@@ -1157,7 +1157,7 @@ ul.tags_images li {
     margin-right: 1%;
 }
 
-ul.tags_images li.last {
+ul.tags_images li:last-child {
     margin-right: 0;
 }
 

@@ -132,9 +132,10 @@
                                             </div>
                                         </a></li>
                                 @endforeach
+                            </ul>
                                 @endif
                                 <div class="clearfix"></div>
-                            </ul>
+
                     </div>
                     {{--<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
                         <ul class="tab_img">

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\ShopProduct;
 
 class ShopProductsTableSeeder extends Seeder
 {
@@ -26,9 +27,8 @@ class ShopProductsTableSeeder extends Seeder
             'Транспорт',
             'Места',
         ];
-
-        $data = [
-            //животные
+        //животные
+        ShopProduct::create(
             [
                 'category_id' => 1,
                 'slug' => Str::slug($categories_arr[0]),
@@ -41,7 +41,9 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[0]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
+            ]
+        );
+        ShopProduct::create(
             [
                 'category_id' => 1,
                 'slug' => Str::slug($categories_arr[0] . '1'),
@@ -54,7 +56,9 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[0]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
+            ]
+        );
+        ShopProduct::create(
             [
                 'category_id' => 1,
                 'slug' => Str::slug($categories_arr[0] . '2'),
@@ -67,8 +71,10 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[0]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
-            //Архитектура
+            ]
+        );
+        //Архитектура
+        ShopProduct::create(
             [
                 'category_id' => 2,
                 'slug' => Str::slug($categories_arr[1]),
@@ -81,7 +87,9 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[1]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
+            ]
+        );
+        ShopProduct::create(
             [
                 'category_id' => 2,
                 'slug' => Str::slug($categories_arr[1] . '1'),
@@ -94,8 +102,10 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[1]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
-            //Города
+            ]
+        );
+        //Города
+        ShopProduct::create(
             [
                 'category_id' => 3,
                 'slug' => Str::slug($categories_arr[2]),
@@ -108,7 +118,9 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[2]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
+            ]
+        );
+        ShopProduct::create(
             [
                 'category_id' => 3,
                 'slug' => Str::slug($categories_arr[2] . '1'),
@@ -121,7 +133,9 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[2]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
+            ]
+        );
+        ShopProduct::create(
             [
                 'category_id' => 3,
                 'slug' => Str::slug($categories_arr[2] . '2'),
@@ -134,8 +148,10 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[2]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
-            //Электроника
+            ]
+        );
+        //Электроника
+        ShopProduct::create(
             [
                 'category_id' => 4,
                 'slug' => Str::slug($categories_arr[3]),
@@ -148,7 +164,9 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[3]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
+            ]
+        );
+        ShopProduct::create(
             [
                 'category_id' => 4,
                 'slug' => Str::slug($categories_arr[3] . '1'),
@@ -161,7 +179,9 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[3]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
+            ]
+        );
+        ShopProduct::create(
             [
                 'category_id' => 4,
                 'slug' => Str::slug($categories_arr[3] . '2'),
@@ -174,8 +194,10 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[3]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
-            //Декорации
+            ]
+        );
+        //Декорации
+        ShopProduct::create(
             [
                 'category_id' => 5,
                 'slug' => Str::slug($categories_arr[4]),
@@ -188,7 +210,9 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[4]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
+            ]
+        );
+        ShopProduct::create(
             [
                 'category_id' => 5,
                 'slug' => Str::slug($categories_arr[4] . '1'),
@@ -201,7 +225,9 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[4]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
+            ]
+        );
+        ShopProduct::create(
             [
                 'category_id' => 5,
                 'slug' => Str::slug($categories_arr[4] . '2'),
@@ -214,8 +240,10 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[4]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
-            //Еда и Напитки
+            ]
+        );
+        //Еда и Напитки
+        ShopProduct::create(
             [
                 'category_id' => 6,
                 'slug' => Str::slug($categories_arr[5]),
@@ -228,7 +256,9 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[5]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
+            ]
+        );
+        ShopProduct::create(
             [
                 'category_id' => 6,
                 'slug' => Str::slug($categories_arr[5] . '1'),
@@ -241,7 +271,9 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[5]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
+            ]
+        );
+        ShopProduct::create(
             [
                 'category_id' => 6,
                 'slug' => Str::slug($categories_arr[5] . '2'),
@@ -254,7 +286,9 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[5]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
+            ]
+        );
+        ShopProduct::create(
             [
                 'category_id' => 6,
                 'slug' => Str::slug($categories_arr[5] . '3'),
@@ -267,8 +301,10 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[5]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
-            //Природа
+            ]
+        );
+        //Природа
+        ShopProduct::create(
             [
                 'category_id' => 7,
                 'slug' => Str::slug($categories_arr[6]),
@@ -281,7 +317,9 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[6]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
+            ]
+        );
+        ShopProduct::create(
             [
                 'category_id' => 7,
                 'slug' => Str::slug($categories_arr[6] . '1'),
@@ -294,7 +332,9 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[6]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
+            ]
+        );
+        ShopProduct::create(
             [
                 'category_id' => 7,
                 'slug' => Str::slug($categories_arr[6] . '2'),
@@ -307,8 +347,10 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[6]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
-            //Люди
+            ]
+        );
+        //Люди
+        ShopProduct::create(
             [
                 'category_id' => 8,
                 'slug' => Str::slug($categories_arr[7]),
@@ -321,7 +363,9 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[7]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
+            ]
+        );
+        ShopProduct::create(
             [
                 'category_id' => 8,
                 'slug' => Str::slug($categories_arr[7] . '1'),
@@ -334,7 +378,9 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[7]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
+            ]
+        );
+        ShopProduct::create(
             [
                 'category_id' => 8,
                 'slug' => Str::slug($categories_arr[7] . '2'),
@@ -347,7 +393,9 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[7]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
+            ]
+        );
+        ShopProduct::create(
             [
                 'category_id' => 8,
                 'slug' => Str::slug($categories_arr[7] . '3'),
@@ -360,8 +408,10 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[7]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
-            //Спорт
+            ]
+        );
+        //Спорт
+        ShopProduct::create(
             [
                 'category_id' => 9,
                 'slug' => Str::slug($categories_arr[8]),
@@ -374,7 +424,9 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[8]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
+            ]
+        );
+        ShopProduct::create(
             [
                 'category_id' => 9,
                 'slug' => Str::slug($categories_arr[8] . '1'),
@@ -387,7 +439,9 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[8]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
+            ]
+        );
+        ShopProduct::create(
             [
                 'category_id' => 9,
                 'slug' => Str::slug($categories_arr[8] . '2'),
@@ -400,7 +454,9 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[8]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
+            ]
+        );
+        ShopProduct::create(
             [
                 'category_id' => 9,
                 'slug' => Str::slug($categories_arr[8] . '3'),
@@ -413,7 +469,9 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[8]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
+            ]
+        );
+        ShopProduct::create(
             [
                 'category_id' => 9,
                 'slug' => Str::slug($categories_arr[8] . '4'),
@@ -426,7 +484,9 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[8]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
+            ]
+        );
+        ShopProduct::create(
             [
                 'category_id' => 9,
                 'slug' => Str::slug($categories_arr[8] . '5'),
@@ -439,7 +499,9 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[8]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
+            ]
+        );
+        ShopProduct::create(
             [
                 'category_id' => 9,
                 'slug' => Str::slug($categories_arr[8] . '6'),
@@ -452,8 +514,10 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[8]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
-            //Транспорт
+            ]
+        );
+        //Транспорт
+        ShopProduct::create(
             [
                 'category_id' => 10,
                 'slug' => Str::slug($categories_arr[9]),
@@ -466,7 +530,9 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[9]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
+            ]
+        );
+        ShopProduct::create(
             [
                 'category_id' => 10,
                 'slug' => Str::slug($categories_arr[9] . '1'),
@@ -479,7 +545,9 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[9]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
+            ]
+        );
+        ShopProduct::create(
             [
                 'category_id' => 10,
                 'slug' => Str::slug($categories_arr[9] . '2'),
@@ -492,7 +560,9 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[9]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
+            ]
+        );
+        ShopProduct::create(
             [
                 'category_id' => 10,
                 'slug' => Str::slug($categories_arr[9] . '3'),
@@ -505,7 +575,9 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[9]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
+            ]
+        );
+        ShopProduct::create(
             [
                 'category_id' => 10,
                 'slug' => Str::slug($categories_arr[9] . '4'),
@@ -518,7 +590,9 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[9]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
+            ]
+        );
+        ShopProduct::create(
             [
                 'category_id' => 10,
                 'slug' => Str::slug($categories_arr[9] . '5'),
@@ -531,8 +605,10 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[9]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
-            //Места
+            ]
+        );
+        //Места
+        ShopProduct::create(
             [
                 'category_id' => 11,
                 'slug' => Str::slug($categories_arr[10]),
@@ -545,7 +621,9 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[10]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
+            ]
+        );
+        ShopProduct::create(
             [
                 'category_id' => 11,
                 'slug' => Str::slug($categories_arr[10] . '1'),
@@ -558,7 +636,9 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[10]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
+            ]
+        );
+        ShopProduct::create(
             [
                 'category_id' => 11,
                 'slug' => Str::slug($categories_arr[10] . '2'),
@@ -571,11 +651,18 @@ class ShopProductsTableSeeder extends Seeder
                 'description' => Str::slug($categories_arr[10]) . 'description',
                 'is_published' => 1,
                 'published_at' => $date = date("Y-m-d h:m:s", rand(1507807320, 1518007320)), //'2019-01-17 05:11:03',
-            ],
-            
-        ];
+            ]
+        );
+        /*ShopProduct::create(
 
+        );
+        ShopProduct::create(
 
-        DB::table('shop_products')->insert($data);
+        );
+        ShopProduct::create(
+
+        );*/
+
+        //DB::table('shop_products')->insert($data);
     }
 }
