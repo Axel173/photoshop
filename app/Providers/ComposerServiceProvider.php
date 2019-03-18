@@ -29,12 +29,14 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->categories = new ShopCategoryRepository();
-        $this->arrResult = $this->categories->getAll();
-        // Using Closure based composers...
-        View::composer('*', function ($view) {
+        if (app()->runningInConsole() === false) {
+            $this->categories = new ShopCategoryRepository();
+            $this->arrResult = $this->categories->getAll();
+            // Using Closure based composers...
+            View::composer('*', function ($view) {
+                $view->with(['categories' => $this->arrResult]);
+            });
+        }
 
-            $view->with(['categories' => $this->arrResult]);
-        });
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Shop;
 
+use App\Repositories\ShopCartProductRepository;
+use App\Repositories\ShopCartRepository;
 use App\Repositories\ShopProductRepository;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Cookie;
@@ -19,6 +21,8 @@ class CartController extends BaseController
         parent::__construct();
 
         $this->shopProductRepository = app(ShopProductRepository::class);
+        $this->shopCartProductRepository = app(ShopCartProductRepository::class);
+        $this->shopCartRepository = app(ShopCartRepository::class);
     }
 
     /**
@@ -34,12 +38,15 @@ class CartController extends BaseController
     public function add($product_slug)
     {
 
+        $product = $this->shopProductRepository
+            ->getProduct($product_slug);
+
         //dump(Cookie::get('name'));
         //Создаем экземпляр ответа
-        Cookie::queue(Cookie::make('name', 'value', 60));
+        /*Cookie::queue(Cookie::make('name', 'value', 60));
 
         Cookie::queue('name', 'value', 60);
-        return dump(Cookie::get('name'));
+        return dump(Cookie::get('name'));*/
         //dd(__METHOD__);
         //$products = json_decode(Cookie::get('cart'), true);
         //dd($products);
