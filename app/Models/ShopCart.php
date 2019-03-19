@@ -18,4 +18,10 @@ class ShopCart extends Model
     {
         return $this->hasMany(ShopCartProduct::class, 'cart_id');
     }
+
+    public function products()
+    {
+        return $this->belongsToMany(ShopProduct::class, 'shop_cart_products', 'cart_id', 'product_id')
+            ->withPivot('quantity');
+    }
 }

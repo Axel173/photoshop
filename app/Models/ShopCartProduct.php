@@ -21,4 +21,9 @@ class ShopCartProduct extends Model
     {
         return $this->belongsTo(ShopCart::class);
     }
+
+    public function product()
+    {
+        return $this->belongsTo(ShopProduct::class);
+    }
 }

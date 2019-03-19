@@ -53,7 +53,7 @@ class ComposerServiceProvider extends ServiceProvider
                 $this->cart_id = $encrypter->decrypt($this->cart_id, false);
             }
             $this->arrCategories = $this->categories->getAll();
-            $this->arrCart = $this->cart_id ? $this->cart->getCart($this->cart_id) : false;
+            $this->arrCart = $this->cart_id ? $this->cart->getCartWithProducts($this->cart_id) : false;
             View::composer('*', function ($view) {
                 $view->with([
                     'categories' => $this->arrCategories,

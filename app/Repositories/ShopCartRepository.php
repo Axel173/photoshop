@@ -17,27 +17,31 @@ class ShopCartRepository extends CoreRepository
         return Model::class;
     }
 
-    public function create()
+    public function createNewCart()
     {
-        /*$columns = [
-            'id',
-            'title',
-            'parent_id',
-            'slug'
-        ];*/
         $result = $this
             ->startConditions()::create(array(
                 'is_published' => true,
             ));
-        /*$result = $this
-            ->startConditions()
-            ->select($columns)
-            ->get();*/
 
         return $result;
     }
 
-    public function getCartProduct($cart_id)
+    public function getProducts($cart_id)
+    {
+        $cart = $this->startConditions()
+            ->find($cart_id);
+        if ($cart) {
+            $result = $cart
+                ->products()
+                ->get();
+            return $result;
+        }
+        //return $result[0]->product()->get();
+        return false;
+    }
+
+    public function getCartProducts($cart_id)
     {
         $result = $this->startConditions()
             ->find($cart_id)
@@ -49,11 +53,26 @@ class ShopCartRepository extends CoreRepository
 
     public function getCart($cart_id)
     {
-        $result = $this->startConditions()
-            ->find($cart_id)
-            ->first()
-            ->cartProducts()
-            ->get();
-        return $result;
+        $cart = $this->startConditions()
+            ->find($cart_id);
+        if (!$cart) {
+            $result = $this->createNewCart();
+            return $result->id;
+        }
+
+        return $cart->id;
+    }
+
+    public function getCartWithProducts($cart_id)
+    {
+        $cart = $this->startConditions()
+            ->find($cart_id);
+        if ($cart) {
+            $result = $cart->cartProducts()
+                ->get();
+            return $result;
+        }
+
+        return false;
     }
 }
