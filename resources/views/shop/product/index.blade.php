@@ -1,6 +1,28 @@
 @extends('layouts.shop.app')
 
 @section('content')
+    @php
+        /** @var \Illuminate\Support\ViewErrorBag $errors */
+    @endphp
+    @if($errors->any())
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="alert alert-danger">
+                    {{ $errors->first() }}
+                </div>
+            </div>
+        </div>
+    @endif
+
+    @if(session('success'))
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="alert alert-success">
+                    {{ session()->get('success') }}
+                </div>
+            </div>
+        </div>
+    @endif
     <div class="single">
         @php
             //dump($product)

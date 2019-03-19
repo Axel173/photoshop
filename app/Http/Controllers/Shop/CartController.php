@@ -5,8 +5,7 @@ namespace App\Http\Controllers\Shop;
 use App\Repositories\ShopCartProductRepository;
 use App\Repositories\ShopCartRepository;
 use App\Repositories\ShopProductRepository;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Cookie;
+use Cookie;
 
 class CartController extends BaseController
 {
@@ -15,6 +14,9 @@ class CartController extends BaseController
      * @var ShopProductRepository;
      */
     private $shopProductRepository;
+    private $shopCartProductRepository;
+    private $shopCartRepository;
+    private $cart_id;
 
     public function __construct()
     {
@@ -32,38 +34,52 @@ class CartController extends BaseController
      */
     public function index()
     {
-        //
+
     }
 
     public function add($product_slug)
     {
-
+        $this->cart_id = Cookie::get('cart');
         $product = $this->shopProductRepository
             ->getProduct($product_slug);
 
-        //dump(Cookie::get('name'));
-        //Создаем экземпляр ответа
-        /*Cookie::queue(Cookie::make('name', 'value', 60));
+        if (!$this->cart_id) {
+            $cart = $this->shopCartRepository
+                ->create();
+            $this->cart_id = $cart->id;
+            $cookie = cookie('cart', $this->cart_id);
 
-        Cookie::queue('name', 'value', 60);
-        return dump(Cookie::get('name'));*/
-        //dd(__METHOD__);
-        //$products = json_decode(Cookie::get('cart'), true);
-        //dd($products);
-        /*$product = $this->shopProductRepository
-            ->getProduct($product_slug);
-        $cart = [
-            $product->id => [
-                'quantity' => 1
-            ]
-        ];*/
-        //Cookie::forever('cart', json_encode($cart));
-        /*if($products)
+            $this->shopCartProductRepository
+                ->addToCart($this->cart_id, $product);
+
+            return back()->withCookie($cookie)
+                ->with(['success' => 'Добавлено в корзину']);
+        } else {
+            $cart_product = $this->shopCartRepository
+                ->getCartProduct($this->cart_id);
+            if ($this->searchProductInCart($cart_product, $product->id)) {
+                return back()->withErrors(['msg' => 'Товар уже находится в корзине']);
+            }
+            $this->shopCartProductRepository
+                ->addToCart($this->cart_id, $product);
+        }
+
+        return back()->with(['success' => 'Добавлено в корзину']);
+    }
+
+    public function searchProductInCart($cart_product, $product_id)
+    {
+        if(!empty($cart_product) and $product_id)
         {
-            if()
-        }*/
-        //Cookie::forever('cart', $cart);
-        //dd(__METHOD__);
+            foreach ($cart_product as $key => $product)
+            {
+                if($product->product_id == $product_id)
+                {
+                    return $product_id;
+                }
+            }
+        }
+        return false;
     }
 
     public function remove()

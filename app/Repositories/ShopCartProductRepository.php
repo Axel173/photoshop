@@ -17,20 +17,16 @@ class ShopCartProductRepository extends CoreRepository
         return Model::class;
     }
 
-    /*public function getAll()
+    public function addToCart($cart_id, $product)
     {
-        $columns = [
-            'id',
-            'title',
-            'parent_id',
-            'slug'
-        ];
-
         $result = $this
-            ->startConditions()
-            ->select($columns)
-            ->get();
+            ->startConditions()::create(array(
+                'product_id' => $product->id,
+                'cart_id' => $cart_id,
+                'is_published' => true,
+            ));
 
         return $result;
-    }*/
+    }
+
 }

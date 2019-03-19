@@ -50,7 +50,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                 </li>
                 <li>
-                    <a href="{{ route('shop.cart') }}">Cart <span>(0)</span></a>
+                    <a href="{{ route('shop.cart') }}">Cart <span>(@if($cart) {{ $cart->count() }} @else 0 @endif)</span></a>
                 </li>
             </ul>
         </div>
