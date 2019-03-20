@@ -51,6 +51,14 @@ class ShopCartRepository extends CoreRepository
         return $result;
     }
 
+    public function findCart($cart_id)
+    {
+        $result = $this->startConditions()
+            ->find($cart_id);
+
+        return $result;
+    }
+
     public function getCart($cart_id)
     {
         $cart = $this->startConditions()

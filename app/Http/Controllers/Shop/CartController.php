@@ -36,7 +36,7 @@ class CartController extends BaseController
     {
         $this->cart_id = Cookie::get('cart');
         $cart_products = $this->shopCartRepository->getProducts($this->cart_id);
-        dump($cart_products);
+
         return view('shop.cart.index', compact('cart_products'));
     }
 
@@ -63,7 +63,7 @@ class CartController extends BaseController
             //иначе нужно проверить, есть ли такая корзина
         } else {
             $cart_id = $this->shopCartRepository->getCart($this->cart_id);
-
+            //если корзины нет с таким id нет, создаем новую
             if($cart_id != $this->cart_id)
             {
                 $this->cart_id = $cart_id;
@@ -71,7 +71,7 @@ class CartController extends BaseController
 
             $cart_product = $this->shopCartRepository
                 ->getCartProducts($this->cart_id);
-
+            //проверяем есть ли товар уже в корзине
             if ($this->searchProductInCart($cart_product, $product->id)) {
                 return back()->withErrors(['msg' => 'Товар уже находится в корзине']);
             }
@@ -94,19 +94,39 @@ class CartController extends BaseController
         return false;
     }
 
-    public function remove()
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
     {
-    }
-
-    public function delete()
-    {
+        $cart = $this->checkCartExist();
+        if(!$cart == false)
+        {
+            $res = $this->shopCartProductRepository->deleteFromCart($id, $this->cart_id);
+            if($res)
+            {
+                return back()->with(['success' => 'Товар удален']);
+            }
+        }
+        return back()->withErrors(['msg' => 'Ошибка при удалении, товар в корзине не найден']);
     }
 
     public function change()
     {
     }
 
-    public function check()
+    public function checkCartExist()
     {
+        $this->cart_id = Cookie::get('cart');
+        if($this->cart_id)
+        {
+            $result = $this->shopCartRepository->findCart($this->cart_id);
+            return $result;
+        }
+
+        return false;
     }
 }

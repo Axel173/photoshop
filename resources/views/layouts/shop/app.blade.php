@@ -57,7 +57,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="clearfix"></div>
     </div>
 </div>
+@php
+    /** @var \Illuminate\Support\ViewErrorBag $errors */
+@endphp
+@if($errors->any())
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="alert alert-danger">
+                {{ $errors->first() }}
+            </div>
+        </div>
+    </div>
+@endif
 
+@if(session('success'))
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="alert alert-success">
+                {{ session()->get('success') }}
+            </div>
+        </div>
+    </div>
+@endif
 @yield('content')
 
 <div class="grid_2">
