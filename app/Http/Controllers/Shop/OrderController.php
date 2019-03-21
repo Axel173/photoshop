@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Shop;
 
+use App\Mail\TestMail;
 use App\Repositories\ShopCartProductRepository;
 use App\Repositories\ShopCartRepository;
 use App\Repositories\ShopProductRepository;
 use Cookie;
 use Illuminate\Http\Request;
+use Mail;
 
 class OrderController extends BaseController
 {
@@ -32,7 +34,9 @@ class OrderController extends BaseController
      */
     public function index()
     {
-        dd(__METHOD__);
+        Mail::to('alex310197@live.com')
+            ->send(new TestMail());
+        //dd(__METHOD__);
     }
 
     /**
