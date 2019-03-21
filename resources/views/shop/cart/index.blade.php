@@ -58,7 +58,8 @@
                                     @endif
                                 </td>
                                 <!-- Total Price -->
-                                <td class="green">@if($product->discount > 0)
+                                <td class="green">
+                                    @if($product->discount > 0)
                                         @php $total_price += $product->price * ((100 - $product->discount) / 100) @endphp
                                         {{ $product->price * ((100 - $product->discount) / 100) }} RUB
                                     @else

@@ -50,37 +50,40 @@
                 </form>
             </div>
             <div class="col-md-4 order-md-2 mb-4">
-                <h4 class="d-flex justify-content-between align-items-center mb-3">
-                    <span class="text-muted">Your cart</span>
-                    <span class="badge badge-secondary badge-pill">3</span>
-                </h4>
-                <ul class="list-group mb-3">
-                    <li class="list-group-item d-flex justify-content-between lh-condensed">
-                        <div>
-                            <h6 class="my-0">Product name</h6>
-                            <small class="text-muted">Brief description</small>
-                        </div>
-                        <span class="text-muted">$12</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between lh-condensed">
-                        <div>
-                            <h6 class="my-0">Second product</h6>
-                            <small class="text-muted">Brief description</small>
-                        </div>
-                        <span class="text-muted">$8</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between lh-condensed">
-                        <div>
-                            <h6 class="my-0">Third item</h6>
-                            <small class="text-muted">Brief description</small>
-                        </div>
-                        <span class="text-muted">$5</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Total (USD)</span>
-                        <strong>$20</strong>
-                    </li>
-                </ul>
+                @if(isset($cart_products) and $cart_products !== false and $cart_products->count() > 0)
+                    @php
+                        $total_price = 0;
+                    @endphp
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted">Your cart</span>
+                        <span class="badge badge-secondary badge-pill">{{ $cart_products->count() }}</span>
+                    </h4>
+                    <ul class="list-group mb-3">
+                        @foreach($cart_products as $key => $product)
+                            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                <div>
+                                    <h6 class="my-0"><a
+                                                href="{{ route('shop.product', $product->slug) }}">{{ $product->title }}</a>
+                                    </h6>
+                                    <small class="text-muted">{{ $product->description }}</small>
+                                </div>
+                                <span class="text-muted">
+                                    @if($product->discount > 0)
+                                        @php $total_price += $product->price * ((100 - $product->discount) / 100) @endphp
+                                        {{ $product->price * ((100 - $product->discount) / 100) }} RUB
+                                    @else
+                                        @php $total_price += $product->price @endphp
+                                        {{ $product->price }} RUB
+                                    @endif
+                                </span>
+                            </li>
+                        @endforeach
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Total (RUB)</span>
+                            <strong>{{ $total_price }} RUB</strong>
+                        </li>
+                    </ul>
+                @endif
             </div>
         </div>
 

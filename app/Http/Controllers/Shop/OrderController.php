@@ -2,15 +2,27 @@
 
 namespace App\Http\Controllers\Shop;
 
+use App\Repositories\ShopCartProductRepository;
+use App\Repositories\ShopCartRepository;
+use App\Repositories\ShopProductRepository;
+use Cookie;
 use Illuminate\Http\Request;
 
 class OrderController extends BaseController
 {
+
+    private $shopProductRepository;
+    private $shopCartProductRepository;
+    private $shopCartRepository;
+    private $cart_id;
+
     public function __construct()
     {
         parent::__construct();
 
-        //$this->shopProductRepository = app(ShopProductRepository::class);
+        $this->shopProductRepository = app(ShopProductRepository::class);
+        $this->shopCartProductRepository = app(ShopCartProductRepository::class);
+        $this->shopCartRepository = app(ShopCartRepository::class);
     }
 
     /**
@@ -30,7 +42,15 @@ class OrderController extends BaseController
      */
     public function create()
     {
-        return view('shop.order.create');
+        $this->cart_id = Cookie::get('cart');
+        $cart_products = $this->shopCartRepository->getProducts($this->cart_id);
+        if(!$cart_products->count())
+        {
+            return redirect()
+                ->route('shop.cart')
+                ->withErrors(['msg' => 'Нет товаров для заказа']);
+        }
+        return view('shop.order.create', compact('cart_products'));
     }
 
     /**
