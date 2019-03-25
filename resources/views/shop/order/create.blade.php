@@ -6,18 +6,21 @@
             <h1>Make order</h1>
             <div class="col-md-8 order-md-1">
                 <h4 class="mb-3">Billing address</h4>
-                <form class="needs-validation" novalidate="">
+                <form class="needs-validation" novalidate="" method="POST" action="{{ route('shop.order.store') }}">
+                    @csrf
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="firstName">First name</label>
-                            <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+                            <input name="first_name" type="text" class="form-control" id="firstName" placeholder=""
+                                   value="{{ old('first_name') }}" required="">
                             <div class="invalid-feedback">
                                 Valid first name is required.
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="lastName">Last name</label>
-                            <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+                            <input name="last_name" type="text" class="form-control" id="lastName" placeholder=""
+                                   value="{{ old('last_name') }}" required="">
                             <div class="invalid-feedback">
                                 Valid last name is required.
                             </div>
@@ -30,7 +33,8 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">@</span>
                             </div>
-                            <input type="text" class="form-control" id="username" placeholder="Username" required="">
+                            <input name="user_name" type="text" class="form-control" id="username"
+                                   placeholder="Username" value="{{ old('user_name') }}" required="">
                             <div class="invalid-feedback" style="width: 100%;">
                                 Your username is required.
                             </div>
@@ -38,10 +42,20 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="email">Email <span class="text-muted">(Optional)</span></label>
-                        <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                        <label for="email">Email <span class="text-muted">(Required)</span></label>
+                        <input name="email" type="email" class="form-control" id="email" placeholder="you@example.com"
+                               required="" value="{{ old('email') }}">
                         <div class="invalid-feedback">
                             Please enter a valid email address for shipping updates.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description">Description <span class="text-muted">(Optional)</span></label>
+                        <textarea name="description" type="text" class="form-control" id="description"
+                                  placeholder="Some text, about the order">{{ old('description') }}</textarea>
+                        <div class="invalid-feedback">
+                            This field is optional. You can steel this field empty
                         </div>
                     </div>
 

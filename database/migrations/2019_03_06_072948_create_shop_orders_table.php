@@ -18,6 +18,10 @@ class CreateShopOrdersTable extends Migration
             $table->unsignedBigInteger('payment_id');
 
             $table->integer('total_price')->unsigned();
+            $table->text('first_name');
+            $table->text('last_name');
+            $table->text('user_name');
+            $table->text('email');
             $table->text('description');
 
             $table->boolean('is_published')->default(false);
