@@ -88,18 +88,23 @@ class OrderController extends BaseController
         $total_price = (int)$this->totalPrice($cart_products);
 
         $data = $request->input();
-        $user = $this->shopUserRepository->findEmail($data['email']);
-        if (!$user) {
-            $password = Str::random(8);
-            $user = User::create([
-                'name' => $data['first_name'],
-                'email' => $data['email'],
-                'password' => Hash::make($password),
-            ]);
-            $user->save();
-            //Mail::to($user)->send(new UserRegistered($user));
-            Auth::login($user, true);
+        $user = Auth::user();
+        if(!$user)
+        {
+            $user = $this->shopUserRepository->findEmail($data['email']);
+            if (!$user) {
+                $password = Str::random(8);
+                $user = User::create([
+                    'name' => $data['first_name'],
+                    'email' => $data['email'],
+                    'password' => Hash::make($password),
+                ]);
+                $user->save();
+                //Mail::to($user)->send(new UserRegistered($user));
+                Auth::login($user, true);
+            }
         }
+
         $order = $this->shopOrderRepository->createNewOrder([
             'total_price' => $total_price,
             'first_name' => $data['first_name'],
@@ -114,8 +119,7 @@ class OrderController extends BaseController
         $this->shopCartProductRepository->deleteAllFromCart($this->cart_id);
 
         Mail::to($user)
-            ->send(new OrderMail($order, $order_products));
-
+            ->send(new OrderMail($order, $cart_products));
         if ($order and $order_products) {
             return redirect()
                 ->route('shop.cart')

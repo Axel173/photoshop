@@ -34,8 +34,10 @@ class OrderMail extends Mailable
      */
     public function build()
     {
+        /*dd($this->order, $this->order_products);*/
         return $this->view('shop.mail.order')
             ->subject('Заказ оформлен')
+            ->bcc(env("MAIL_ADMIN"))
             ->with([
                 'order' => $this->order,
                 'order_products' => $this->order_products,
