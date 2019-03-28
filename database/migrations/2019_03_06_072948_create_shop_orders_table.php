@@ -15,12 +15,11 @@ class CreateShopOrdersTable extends Migration
     {
         Schema::create('shop_orders', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('payment_id');
-
+            //$table->unsignedBigInteger('payment_id');
+            $table->unsignedBigInteger('user_id');
             $table->integer('total_price')->unsigned();
             $table->text('first_name');
             $table->text('last_name');
-            $table->text('user_name');
             $table->text('email');
             $table->text('description');
 
@@ -30,8 +29,8 @@ class CreateShopOrdersTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('payment_id')->references('id')->on('shop_payments');
-
+            //$table->foreign('payment_id')->references('id')->on('shop_payments');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->index('is_published');
         });
     }

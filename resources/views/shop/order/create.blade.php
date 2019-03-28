@@ -27,7 +27,7 @@
                         </div>
                     </div>
 
-                    <div class="mb-3">
+                    {{--<div class="mb-3">
                         <label for="username">Username</label>
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -39,7 +39,7 @@
                                 Your username is required.
                             </div>
                         </div>
-                    </div>
+                    </div>--}}
 
                     <div class="mb-3">
                         <label for="email">Email <span class="text-muted">(Required)</span></label>

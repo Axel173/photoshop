@@ -42,4 +42,16 @@ class ShopCartProductRepository extends CoreRepository
         return false;
     }
 
+    public function deleteAllFromCart($cart_id)
+    {
+        $cart_products = $this->startConditions()
+            //->find($id)
+            ->where(['cart_id' => $cart_id]);
+        if ($cart_products) {
+            $result = $cart_products->delete();
+            return $result;
+        }
+        return false;
+    }
+
 }

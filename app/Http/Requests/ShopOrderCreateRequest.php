@@ -26,7 +26,7 @@ class ShopOrderCreateRequest extends FormRequest
         return [
             'first_name'    => 'required|min:5|max:200',
             'last_name'     => 'required|min:5|max:200',
-            'user_name'     => 'required|min:5|max:200',
+            /*'user_name'     => 'required|min:5|max:200',*/
             'email'         => 'required|email',
             'description'   => 'max:500',
 //            'slug'        => 'max:200',

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Shop;
 
 use App\Http\Requests\ShopOrderCreateRequest;
-use App\Mail\TestMail;
+use App\Mail\OrderMail;
 use App\Repositories\ShopCartProductRepository;
 use App\Repositories\ShopCartRepository;
+use App\Repositories\ShopOrderedProductRepository;
+use App\Repositories\ShopOrderRepository;
 use App\Repositories\ShopProductRepository;
 use App\Repositories\ShopUserRepository;
 use App\User;
@@ -24,6 +26,8 @@ class OrderController extends BaseController
     private $shopCartRepository;
     private $cart_id;
     private $shopUserRepository;
+    private $shopOrderRepository;
+    private $shopOrderedProductRepository;
 
     public function __construct()
     {
@@ -33,6 +37,8 @@ class OrderController extends BaseController
         $this->shopCartProductRepository = app(ShopCartProductRepository::class);
         $this->shopCartRepository = app(ShopCartRepository::class);
         $this->shopUserRepository = app(ShopUserRepository::class);
+        $this->shopOrderRepository = app(ShopOrderRepository::class);
+        $this->shopOrderedProductRepository = app(ShopOrderedProductRepository::class);
     }
 
     /**
@@ -42,7 +48,7 @@ class OrderController extends BaseController
      */
     public function index()
     {
-
+        //redirect(route('shop.order.create'));
         /*Mail::to('alex310197@live.com')
             ->send(new TestMail());*/
         dump(Auth::user());
@@ -55,8 +61,7 @@ class OrderController extends BaseController
      */
     public function create()
     {
-        $this->cart_id = Cookie::get('cart');
-        $cart_products = $this->shopCartRepository->getProducts($this->cart_id);
+        $cart_products = $this->checkCartProducts();
         if (!$cart_products->count()) {
             return redirect()
                 ->route('shop.cart')
@@ -73,10 +78,18 @@ class OrderController extends BaseController
      */
     public function store(ShopOrderCreateRequest $request)
     {
+        $cart_products = $this->checkCartProducts();
+
+        if (!$cart_products->count()) {
+            return redirect()
+                ->route('shop.cart')
+                ->withErrors(['msg' => 'Нет товаров для заказа']);
+        }
+        $total_price = (int)$this->totalPrice($cart_products);
+
         $data = $request->input();
-        $res = $this->shopUserRepository->findEmail($data['email']);
-        if(!$res)
-        {
+        $user = $this->shopUserRepository->findEmail($data['email']);
+        if (!$user) {
             $password = Str::random(8);
             $user = User::create([
                 'name' => $data['first_name'],
@@ -87,6 +100,56 @@ class OrderController extends BaseController
             //Mail::to($user)->send(new UserRegistered($user));
             Auth::login($user, true);
         }
+        $order = $this->shopOrderRepository->createNewOrder([
+            'total_price' => $total_price,
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'email' => $data['email'],
+            'description' => $data['description'],
+            'user_id' => $user->id,
+        ]);
+
+        $order_products = $this->shopOrderedProductRepository->addProductsInOrder($order->id, $cart_products);
+
+        $this->shopCartProductRepository->deleteAllFromCart($this->cart_id);
+
+        Mail::to($user)
+            ->send(new OrderMail($order, $order_products));
+
+        if ($order and $order_products) {
+            return redirect()
+                ->route('shop.cart')
+                ->with(['success' => 'Заказ сформирован. Дополнительную информацию Вы получите по email']);
+        } else {
+            return back()
+                ->withErrors(['msg' => 'Ошибка сохранения'])
+                ->withInput();
+        }
+    }
+
+    public function checkCartProducts()
+    {
+        $this->cart_id = Cookie::get('cart');
+        $result = $this->shopCartRepository->getProducts($this->cart_id);
+        return $result;
+    }
+
+    public function totalPrice($cart_products)
+    {
+        $total_price = 0;
+        if (!empty($cart_products)) {
+            foreach ($cart_products as $product) {
+                if ($product->discount > 0) {
+                    $total_price += $product->price * ((100 - $product->discount) / 100);
+                } else {
+                    $total_price += $product->price;
+                }
+            }
+
+            return $total_price;
+        }
+
+        return false;
     }
 
     /**
