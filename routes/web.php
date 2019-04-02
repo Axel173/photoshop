@@ -41,8 +41,16 @@ Route::group($groupData, function () {
     Route::resource('order', 'OrderController')
         ->only($methods)
         ->names('shop.order');
+
 });
 
+$groupData = [
+    'namespace' => 'Shop\Admin',
+];
+Route::group($groupData, function () {
+    Route::get('admin/', 'AdminController@index')
+        ->name('shop.admin');
+});
 
 Auth::routes();
 

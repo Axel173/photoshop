@@ -16,6 +16,7 @@ class CreateShopOrdersTable extends Migration
         Schema::create('shop_orders', function (Blueprint $table) {
             $table->bigIncrements('id');
             //$table->unsignedBigInteger('payment_id');
+            $table->unsignedBigInteger('status_id')->unsigned()->default(1);
             $table->unsignedBigInteger('user_id');
             $table->integer('total_price')->unsigned();
             $table->text('first_name');
@@ -29,6 +30,7 @@ class CreateShopOrdersTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
+            $table->foreign('status_id')->references('id')->on('shop_order_statuses');
             //$table->foreign('payment_id')->references('id')->on('shop_payments');
             $table->foreign('user_id')->references('id')->on('users');
             $table->index('is_published');
