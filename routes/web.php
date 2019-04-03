@@ -52,6 +52,11 @@ Route::group($groupData, function () {
         ->name('shop.admin');
 });
 
+//отображение формы аутентификации админа
+Route::get('admin/login', 'Auth\LoginController@showLoginForm')->name('admin.login');
+//POST запрос аутентификации на сайте
+Route::post('admin/login', 'Auth\LoginController@loginn');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

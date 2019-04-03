@@ -3,22 +3,35 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Route;
 
 class CheckUserType
 {
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure $next
      * @return mixed
      */
     public function handle($request, Closure $next)
     {
-        if(!$request->user() OR !$request->user()->type)
+        $cur_route = Route::currentRouteName();
+
+        if ($request->user() and $request->user()->type) //если юзересть и он админ
         {
-            return redirect()
-                ->route('login');
+            if ($cur_route == 'admin.login') //если на форме входа
+            {
+                return redirect()
+                    ->route('shop.admin'); //редиректим в админку
+            }
+
+        } else { //если неавторизован
+            if ($cur_route !== 'admin.login') //если не форма входа
+            {
+                return redirect()
+                    ->route('admin.login'); //редиректим на форму входа
+            }
         }
 
         return $next($request);
