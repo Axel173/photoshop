@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Shop\Admin;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -18,7 +19,7 @@ class AdminController extends BaseAdminController
      */
     public function index()
     {
-        //
+        dd(__METHOD__, Auth::user());
     }
 
     /**

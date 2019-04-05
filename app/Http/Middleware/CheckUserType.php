@@ -16,24 +16,24 @@ class CheckUserType
      */
     public function handle($request, Closure $next)
     {
+
         $cur_route = Route::currentRouteName();
 
         if ($request->user() and $request->user()->type) //если юзересть и он админ
         {
-            if ($cur_route == 'admin.login') //если на форме входа
+            if ($cur_route == 'shop.admin.login') //если на форме входа
             {
                 return redirect()
                     ->route('shop.admin'); //редиректим в админку
             }
 
         } else { //если неавторизован
-            if ($cur_route !== 'admin.login') //если не форма входа
+            if ($cur_route !== 'shop.admin.login' AND $request->method() !== 'POST') //если не форма входа
             {
                 return redirect()
-                    ->route('admin.login'); //редиректим на форму входа
+                    ->route('shop.admin.login'); //редиректим на форму входа
             }
         }
-
         return $next($request);
     }
 }

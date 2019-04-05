@@ -9,6 +9,7 @@
 namespace App\Repositories;
 
 use App\User as Model;
+use Hash;
 
 class ShopUserRepository extends CoreRepository
 {
@@ -26,5 +27,4 @@ class ShopUserRepository extends CoreRepository
 
         return $result;
     }
-
 }

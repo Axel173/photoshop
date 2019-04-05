@@ -35,50 +35,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </li>
                     @endif
                 @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
-
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
+                    <li class="login">
+                        <div id="loginContainer"><a href="#" id="loginButton"><span>{{ Auth::user()->name }}</span></a>
+                            <div id="loginBox">
+                                <form id="loginForm" action="{{ route('logout') }}" method="POST">
+                                    <fieldset id="body">
+                                        <fieldset>
+                                            @csrf
+                                            <input type="submit" id="login" value="logout">
+                                        </fieldset>
+                                    </fieldset>
+                                </form>
+                            </div>
                         </div>
                     </li>
                 @endguest
-                <li><a href="register.html">Register</a></li>
-                |
-                <li class="login">
-                    <div id="loginContainer"><a href="#" id="loginButton"><span>Login</span></a>
-                        <div id="loginBox">
-                            <form id="loginForm">
-                                <fieldset id="body">
-                                    <fieldset>
-                                        <label for="email">Email Address</label>
-                                        <input type="text" name="email" id="email">
-                                    </fieldset>
-                                    <fieldset>
-                                        <label for="password">Password</label>
-                                        <input type="password" name="password" id="password">
-                                    </fieldset>
-                                    <input type="submit" id="login" value="Sign in">
-                                    <label for="checkbox"><input type="checkbox" id="checkbox"> <i>Remember
-                                            me</i></label>
-                                </fieldset>
-                                <span><a href="#">Forgot your password?</a></span>
-                            </form>
-                        </div>
-                    </div>
-                </li>
                 <li>
-                    <a href="{{ route('shop.cart') }}">Cart <span>(@if($cart) {{ $cart->count() }} @else 0 @endif)</span></a>
+                    <a href="{{ route('shop.cart') }}">Cart (<span>
+                            @if($cart)
+                                {{ $cart->count() }}
+                            @else
+                                0
+                            @endif</span>)</a>
                 </li>
             </ul>
         </div>
@@ -218,6 +196,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     });
 </script>
 <script src="{{ asset('js/menu_jquery.js') }}"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"/>
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 </html>

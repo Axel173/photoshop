@@ -31,6 +31,9 @@ Route::group($groupData, function () {
         ->name('shop.cart');
     Route::get('cart/add/{product_id}/', 'CartController@add')
         ->name('shop.cart.add');
+    Route::get('personal/', 'PersonalController@index')
+        ->name('shop.personal')
+        ->middleware(['auth']);
 
     Route::delete('cart/delete/{id}', 'CartController@destroy')
         ->name('shop.cart.delete')
@@ -44,19 +47,24 @@ Route::group($groupData, function () {
 
 });
 
+
+
 $groupData = [
     'namespace' => 'Shop\Admin',
 ];
 Route::group($groupData, function () {
+    //отображение формы аутентификации админа
+    Route::get('admin/login', 'LoginController@showLoginForm')->name('shop.admin.login');
+    Route::post('admin/login', 'LoginController@login');
+
     Route::get('admin/', 'AdminController@index')
         ->name('shop.admin');
 });
 
-//отображение формы аутентификации админа
-Route::get('admin/login', 'Auth\LoginController@showLoginForm')->name('admin.login');
-//POST запрос аутентификации на сайте
-Route::post('admin/login', 'Auth\LoginController@loginn');
-
 Auth::routes();
+//POST запрос аутентификации на сайте
+/*Route::post('admin/login', 'Auth\LoginController@loginn');*/
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+
+//Route::get('/home', 'HomeController@index')->name('home');

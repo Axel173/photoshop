@@ -3,11 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Middleware\CheckUserType;
-use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Request;
-use Route;
 
 class LoginController extends Controller
 {
@@ -29,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/personal';
 
     /**
      * Create a new controller instance.
@@ -38,17 +34,6 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        if(Route::currentRouteName() == 'admin.login')
-        {
-            $this->middleware(CheckUserType::class);
-        } else {
-            $this->middleware('guest')->except('logout');
-        }
-    }
-
-    public function loginn(Request $request)
-    {
-        dd('test');
-
+        $this->middleware('guest')->except('logout');
     }
 }

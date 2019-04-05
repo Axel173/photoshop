@@ -143,6 +143,7 @@ body a {
     display: block;
     border: 0;
     padding: 0;
+    text-align: center;
 }
 
 fieldset#body {
@@ -200,7 +201,7 @@ fieldset#body {
 #loginForm #login {
     font-family: 'Open Sans', sans-serif;
     width: auto;
-    float: left;
+    /*float: left;*/
     background: #00C78A;
     color: #fff;
     font-size: 0.8725em;
