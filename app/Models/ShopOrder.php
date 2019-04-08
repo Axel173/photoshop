@@ -19,4 +19,20 @@ class ShopOrder extends Model
             'user_id',
             'is_published'
         ];
+
+    public function status()
+    {
+        return $this->belongsTo(ShopOrderStatus::class);
+    }
+
+    /*public function products()
+    {
+        return $this->belongsTo(ShopOrderedProduct::class);
+    }*/
+
+    public function products()
+    {
+        return $this->belongsToMany(ShopProduct::class, 'shop_ordered_products', 'order_id', 'product_id')
+            ->withPivot('id', 'title', 'price', 'discount')->orderBy('pivot_id', 'ASC');
+    }
 }

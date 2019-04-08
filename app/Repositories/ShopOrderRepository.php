@@ -33,4 +33,14 @@ class ShopOrderRepository extends CoreRepository
         return $result;
     }
 
+    public function getLast($user_id)
+    {
+        $orders = $this->startConditions()
+            ->latest('created_at')
+            ->limit(1)
+            ->with(['products'])
+            ->where('user_id', $user_id)
+            ->get();
+        return $orders;
+    }
 }

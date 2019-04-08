@@ -22,20 +22,11 @@ class UloginController extends Controller
         $network = $user['network'];
 
         // Find user in DB.
-        $userData = User::where('email', $user['email'])->first();
-
+        $userData = User::where('vk_id', $user['uid'])->first();
         // Check exist user.
         if (isset($userData->id)) {
-
-            // Check user status.
-            if ($userData->status) {
-
-                // Make login user.
-                Auth::loginUsingId($userData->id, TRUE);
-            } // Wrong status.
-            else {
-                \Session::flash('flash_message_error', trans('interface.AccountNotActive'));
-            }
+            // Make login user.
+            Auth::loginUsingId($userData->id, TRUE);
 
             return back();
         } // Make registration new user.
@@ -44,12 +35,10 @@ class UloginController extends Controller
             // Create new user in DB.
             $newUser = User::create([
                 'name' => $user['first_name'] . ' ' . $user['last_name'],
-                'avatar' => $user['photo'],
-                'email' => $user['email'],
+                'vk_id' => $user['uid'],
                 'password' => Hash::make(Str::random(8)),
                 'role' => 0,
             ]);
-
             // Make login user.
             Auth::loginUsingId($newUser->id, TRUE);
 

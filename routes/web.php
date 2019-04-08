@@ -17,7 +17,8 @@ $groupData = [
 
 
 Route::group($groupData, function () {
-    Route::get('/', 'HomeController@index');
+    Route::get('/', 'HomeController@index')
+        ->name('shop.main');
 
     Route::get('search/', 'SearchController@search')
         ->name('shop.search');
@@ -45,6 +46,9 @@ Route::group($groupData, function () {
         ->only($methods)
         ->names('shop.order');
 
+    Route::post('ulogin', 'UloginController@login')
+        ->name('shop.ulogin');
+
 });
 
 
@@ -67,4 +71,4 @@ Auth::routes();
 
 
 
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');

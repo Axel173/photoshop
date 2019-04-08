@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class ShopOrderedProduct extends Model
 {
     use SoftDeletes;
+
+    public function order()
+    {
+        return $this->belongsTo(ShopOrder::class);
+    }
 }

@@ -2,19 +2,27 @@
 
 namespace App\Http\Controllers\Shop;
 
+use App\Repositories\ShopOrderRepository;
 use Auth;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class PersonalController extends BaseController
 {
+    private $shopOrderRepository;
+
     public function __construct()
     {
         parent::__construct();
+        $this->shopOrderRepository = app(ShopOrderRepository::class);
+
     }
 
     public function index()
     {
-        dd(__METHOD__, Auth::user());
+        $user_id = Auth::user()->id;
+
+        $last_order = $this->shopOrderRepository
+            ->getLast($user_id);
+        return view('shop.personal.index', compact('last_order'));
+        dd($orders, __METHOD__, Auth::user());
     }
 }

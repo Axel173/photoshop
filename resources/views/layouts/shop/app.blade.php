@@ -39,6 +39,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div id="loginContainer"><a href="#" id="loginButton"><span>{{ Auth::user()->name }}</span></a>
                             <div id="loginBox">
                                 <form id="loginForm" action="{{ route('logout') }}" method="POST">
+
                                     <fieldset id="body">
                                         <fieldset>
                                             @csrf
@@ -48,6 +49,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </form>
                             </div>
                         </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-black-50" href="{{ route('shop.personal') }}">
+                            personal
+                        </a>
                     </li>
                 @endguest
                 <li>

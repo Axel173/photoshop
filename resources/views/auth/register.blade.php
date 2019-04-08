@@ -67,6 +67,7 @@
                                     {{ __('Register') }}
                                 </button>
                             </div>
+                            @include('auth.includes.social')
                         </div>
                     </form>
                 </div>
