@@ -5,7 +5,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2019-03-13 20:11:57.
+    * Generated on 2019-04-05 09:40:31.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -32,6 +32,7 @@ namespace PHPSTORM_META {
         'Illuminate\Routing\Contracts\ControllerDispatcher' => \Illuminate\Routing\ControllerDispatcher::class,
         'Illuminate\Session\Middleware\StartSession' => \Illuminate\Session\Middleware\StartSession::class,
         'Laravel\Scout\EngineManager' => \Laravel\Scout\EngineManager::class,
+        'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
         'NunoMaduro\Collision\Contracts\Adapters\Phpunit\Listener' => \NunoMaduro\Collision\Adapters\Phpunit\Listener::class,
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
         'auth' => \Illuminate\Auth\AuthManager::class,
@@ -174,6 +175,7 @@ namespace PHPSTORM_META {
         'Illuminate\Routing\Contracts\ControllerDispatcher' => \Illuminate\Routing\ControllerDispatcher::class,
         'Illuminate\Session\Middleware\StartSession' => \Illuminate\Session\Middleware\StartSession::class,
         'Laravel\Scout\EngineManager' => \Laravel\Scout\EngineManager::class,
+        'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
         'NunoMaduro\Collision\Contracts\Adapters\Phpunit\Listener' => \NunoMaduro\Collision\Adapters\Phpunit\Listener::class,
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
         'auth' => \Illuminate\Auth\AuthManager::class,
@@ -316,6 +318,7 @@ namespace PHPSTORM_META {
         'Illuminate\Routing\Contracts\ControllerDispatcher' => \Illuminate\Routing\ControllerDispatcher::class,
         'Illuminate\Session\Middleware\StartSession' => \Illuminate\Session\Middleware\StartSession::class,
         'Laravel\Scout\EngineManager' => \Laravel\Scout\EngineManager::class,
+        'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
         'NunoMaduro\Collision\Contracts\Adapters\Phpunit\Listener' => \NunoMaduro\Collision\Adapters\Phpunit\Listener::class,
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
         'auth' => \Illuminate\Auth\AuthManager::class,
@@ -458,6 +461,7 @@ namespace PHPSTORM_META {
         'Illuminate\Routing\Contracts\ControllerDispatcher' => \Illuminate\Routing\ControllerDispatcher::class,
         'Illuminate\Session\Middleware\StartSession' => \Illuminate\Session\Middleware\StartSession::class,
         'Laravel\Scout\EngineManager' => \Laravel\Scout\EngineManager::class,
+        'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
         'NunoMaduro\Collision\Contracts\Adapters\Phpunit\Listener' => \NunoMaduro\Collision\Adapters\Phpunit\Listener::class,
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
         'auth' => \Illuminate\Auth\AuthManager::class,
@@ -600,6 +604,7 @@ namespace PHPSTORM_META {
         'Illuminate\Routing\Contracts\ControllerDispatcher' => \Illuminate\Routing\ControllerDispatcher::class,
         'Illuminate\Session\Middleware\StartSession' => \Illuminate\Session\Middleware\StartSession::class,
         'Laravel\Scout\EngineManager' => \Laravel\Scout\EngineManager::class,
+        'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
         'NunoMaduro\Collision\Contracts\Adapters\Phpunit\Listener' => \NunoMaduro\Collision\Adapters\Phpunit\Listener::class,
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
         'auth' => \Illuminate\Auth\AuthManager::class,
@@ -742,6 +747,7 @@ namespace PHPSTORM_META {
         'Illuminate\Routing\Contracts\ControllerDispatcher' => \Illuminate\Routing\ControllerDispatcher::class,
         'Illuminate\Session\Middleware\StartSession' => \Illuminate\Session\Middleware\StartSession::class,
         'Laravel\Scout\EngineManager' => \Laravel\Scout\EngineManager::class,
+        'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
         'NunoMaduro\Collision\Contracts\Adapters\Phpunit\Listener' => \NunoMaduro\Collision\Adapters\Phpunit\Listener::class,
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
         'auth' => \Illuminate\Auth\AuthManager::class,
@@ -884,6 +890,7 @@ namespace PHPSTORM_META {
         'Illuminate\Routing\Contracts\ControllerDispatcher' => \Illuminate\Routing\ControllerDispatcher::class,
         'Illuminate\Session\Middleware\StartSession' => \Illuminate\Session\Middleware\StartSession::class,
         'Laravel\Scout\EngineManager' => \Laravel\Scout\EngineManager::class,
+        'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
         'NunoMaduro\Collision\Contracts\Adapters\Phpunit\Listener' => \NunoMaduro\Collision\Adapters\Phpunit\Listener::class,
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
         'auth' => \Illuminate\Auth\AuthManager::class,

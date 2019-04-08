@@ -47,6 +47,7 @@
                                     <label class="form-check-label" for="remember">
                                         {{ __('Remember Me') }}
                                     </label>
+                                    @include('auth.includes.social')
                                 </div>
                             </div>
                         </div>
@@ -62,6 +63,7 @@
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
+
                             </div>
                         </div>
                     </form>
