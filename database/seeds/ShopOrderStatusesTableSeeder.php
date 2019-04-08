@@ -1,6 +1,6 @@
 <?php
 
-use App\Model\ShopOrderStatus;
+use App\Models\ShopOrderStatus;
 use Illuminate\Database\Seeder;
 
 class ShopOrderStatusesTableSeeder extends Seeder
@@ -15,6 +15,11 @@ class ShopOrderStatusesTableSeeder extends Seeder
         ShopOrderStatus::create(
             [
                 'title' => 'В обработке',
+            ]
+        );
+        ShopOrderStatus::create(
+            [
+                'title' => 'Отменен',
             ]
         );
         ShopOrderStatus::create(
