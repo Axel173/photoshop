@@ -23,6 +23,5 @@ class PersonalController extends BaseController
         $last_order = $this->shopOrderRepository
             ->getLast($user_id);
         return view('shop.personal.index', compact('last_order'));
-        dd($orders, __METHOD__, Auth::user());
     }
 }

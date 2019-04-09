@@ -78,7 +78,7 @@
                     <ul class="resp-tabs-list">
                         <li class="resp-tab-item {{ (!Route::current()->parameter("category_slug")) ? 'resp-tab-active' : '' }}"
                             aria-controls="tab_item-0" role="tab">
-                            <a href="{{ route('shop.category') }}"><span>Все</span></a>
+                            <a class="ajax" href="{{ route('shop.category') }}"><span>Все</span></a>
                         </li>
                         {{--<li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>What's Hot</span></li>--}}
                         @php
@@ -94,7 +94,7 @@
                             @endphp
                             <li class="resp-tab-item {{ (Route::current()->parameter("category_slug") ===  $category->slug) ? 'resp-tab-active' : '' }}"
                                 aria-controls="tab_item-{{ $category->id }}" role="tab">
-                                <a href="{{ route('shop.category', $category->slug) }}"><span>{{ $category->title }}</span></a>
+                                <a class="ajax" href="{{ route('shop.category', $category->slug) }}"><span>{{ $category->title }}</span></a>
                             </li>
                         @endforeach
                         <div class="clearfix"></div>

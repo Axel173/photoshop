@@ -17,6 +17,10 @@ class ShopOrderRepository extends CoreRepository
         return Model::class;
     }
 
+    /**
+     * @param $fields
+     * @return mixed
+     */
     public function createNewOrder($fields)
     {
         $result = $this
@@ -33,14 +37,87 @@ class ShopOrderRepository extends CoreRepository
         return $result;
     }
 
+    /**
+     * @param $id
+     * @param $user_id
+     * @return mixed
+     */
+    public function getOrder($id, $user_id)
+    {
+        $order = $this->startConditions()
+            ->with([
+                'products',
+                'status'
+            ])
+            ->where([
+                ['user_id', $user_id],
+                ['id', $id]
+            ])
+            ->first();
+        return $order;
+    }
+
+    /**
+     * @param $user_id
+     * @param $perPage
+     * @return mixed
+     */
+    public function getAllWithPaginate($user_id, $perPage)
+    {
+        $result = $this
+            ->startConditions()
+            ->with(['status'])
+            ->where([
+                ['user_id', $user_id],
+            ])
+            ->paginate($perPage);
+
+        return $result;
+    }
+
+    /**
+     * @param $user_id
+     * @return mixed
+     */
     public function getLast($user_id)
     {
         $orders = $this->startConditions()
             ->latest('created_at')
-            ->limit(1)
-            ->with(['products'])
-            ->where('user_id', $user_id)
-            ->get();
+            ->with(['status'])
+            //[
+            //  ['status', '=', '1'],
+            //  ['subscribed', '<>', '1'],
+            //]
+            ->where([
+                ['user_id', $user_id],
+                ['status_id', '!=', 2],
+            ])
+            ->first();
         return $orders;
+    }
+
+    /**
+     * @param $order_id
+     * @param $user_id
+     * @return bool
+     */
+    public function cancelOrder($order_id, $user_id)
+    {
+        $order = $this->startConditions()
+            ->where([
+                ['user_id', $user_id],
+                ['id', $order_id],
+                ['status_id', '!=', 2],
+            ])
+            ->first();
+
+        if ($order) {
+            $order->status_id = 2;
+            $order->save();
+
+            return $order;
+        }
+
+        return false;
     }
 }

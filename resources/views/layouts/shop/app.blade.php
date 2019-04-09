@@ -183,7 +183,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
 </div>
 </body>
-<script type="application/x-javascript"> addEventListener("load", function () {
+<script> addEventListener("load", function () {
         setTimeout(hideURLbar, 0);
     }, false);
 
@@ -191,8 +191,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         window.scrollTo(0, 1);
     } </script>
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="{{ asset('js/easyResponsiveTabs.js') }}" type="text/javascript"></script>
-<script type="text/javascript">
+<script src="{{ asset('js/easyResponsiveTabs.js') }}"></script>
+<script>
     $(document).ready(function () {
         $('#horizontalTab').easyResponsiveTabs({
             type: 'default', //Types: default, vertical, accordion
@@ -202,6 +202,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     });
 </script>
 <script src="{{ asset('js/menu_jquery.js') }}"></script>
+<script src="{{ asset('js/scripts.js') }}"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"/>
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 </html>

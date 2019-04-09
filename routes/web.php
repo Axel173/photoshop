@@ -32,15 +32,12 @@ Route::group($groupData, function () {
         ->name('shop.cart');
     Route::get('cart/add/{product_id}/', 'CartController@add')
         ->name('shop.cart.add');
-    Route::get('personal/', 'PersonalController@index')
-        ->name('shop.personal')
-        ->middleware(['auth']);
 
     Route::delete('cart/delete/{id}', 'CartController@destroy')
         ->name('shop.cart.delete')
         ->where('id', '[0-9]+');
 
-    $methods = ['index', 'edit', 'update', 'create', 'store',];
+    $methods = ['index', 'edit', 'update', 'create', 'store'];
 
     Route::resource('order', 'OrderController')
         ->only($methods)
@@ -49,8 +46,20 @@ Route::group($groupData, function () {
     Route::post('ulogin', 'UloginController@login')
         ->name('shop.ulogin');
 
-});
+    Route::group(['middleware' => 'auth'], function () {
 
+        $methods = ['index', 'edit', 'update', 'create', 'store', 'show'];
+
+        Route::get('personal/', 'PersonalController@index')
+            ->name('shop.personal');
+        Route::resource('orders', 'PersonalOrderController')
+            ->only($methods)
+            ->names('shop.personal.orders');
+        Route::get('personal/orders/cancel/{id}/', 'PersonalOrderController@cancel')
+            ->name('shop.personal.orders.cancel');
+    });
+
+});
 
 
 $groupData = [

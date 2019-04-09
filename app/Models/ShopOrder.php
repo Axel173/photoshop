@@ -17,18 +17,14 @@ class ShopOrder extends Model
             'description',
             'total_price',
             'user_id',
-            'is_published'
+            'is_published',
+            'status_id'
         ];
 
     public function status()
     {
         return $this->belongsTo(ShopOrderStatus::class);
     }
-
-    /*public function products()
-    {
-        return $this->belongsTo(ShopOrderedProduct::class);
-    }*/
 
     public function products()
     {

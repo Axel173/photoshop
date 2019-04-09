@@ -2,11 +2,23 @@
 
 namespace App\Http\Controllers\Shop;
 
+use App\Repositories\ShopOrderRepository;
+use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class PersonalOrder extends Controller
+class PersonalOrderController extends BaseController
 {
+
+    private $shopOrderRepository;
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->shopOrderRepository = app(ShopOrderRepository::class);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +26,29 @@ class PersonalOrder extends Controller
      */
     public function index()
     {
-        //
+        $user_id = Auth::user()->id;
+
+        $orders = $this->shopOrderRepository
+            ->getAllWithPaginate($user_id, 10);
+
+        return view('shop.personal.orders.index', compact('orders'));
+    }
+
+
+    /**
+     * @param $id
+     */
+    public function cancel($id)
+    {
+        $user_id = Auth::user()->id;
+
+        $order = $this->shopOrderRepository->cancelOrder($id, $user_id);
+        if(!$order)
+        {
+            return back()->withErrors(['msg' => 'Произобла ошибка при изменении заказа']);
+        }
+
+        return back()->with(['success' => 'Заказ отменен']);
     }
 
     /**
@@ -46,7 +80,15 @@ class PersonalOrder extends Controller
      */
     public function show($id)
     {
-        //
+        $user_id = Auth::user()->id;
+        $order = $this->shopOrderRepository
+            ->getOrder($id, $user_id);
+        if(!$order)
+        {
+            abort(404);
+        }
+        return view('shop.personal.orders.show',
+            compact('order'));
     }
 
     /**
