@@ -118,7 +118,7 @@ class OrderController extends BaseController
 
         $this->shopCartProductRepository->deleteAllFromCart($this->cart_id);
 
-        Mail::to($user)
+        Mail::to($data['email'])
             ->send(new OrderMail($order, $cart_products));
         if ($order and $order_products) {
             return redirect()
