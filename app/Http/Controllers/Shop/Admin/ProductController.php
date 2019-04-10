@@ -2,26 +2,15 @@
 
 namespace App\Http\Controllers\Shop\Admin;
 
-use App\Repositories\ShopCategoryRepository;
-use App\Repositories\ShopOrderRepository;
-use App\Repositories\ShopProductRepository;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class AdminController extends BaseAdminController
+class ProductController extends BaseAdminController
 {
-
-    private $shopOrderRepository;
-    private $shopProductRepository;
-    private $shopCategoryRepository;
 
     public function __construct()
     {
         parent::__construct();
-
-        $this->shopOrderRepository = app(ShopOrderRepository::class);
-        $this->shopProductRepository = app(ShopProductRepository::class);
-        $this->shopCategoryRepository = app(ShopCategoryRepository::class);
-
     }
 
     /**
@@ -31,18 +20,7 @@ class AdminController extends BaseAdminController
      */
     public function index()
     {
-        //dd(__METHOD__, Auth::user());
-        $countOrders = $this->shopOrderRepository->countOrders();
-        $sumOrders = $this->shopOrderRepository->sumOrders();
-        $countProducts = $this->shopProductRepository->countProducts();
-        $countCategories = $this->shopCategoryRepository->countCategories();
-
-        return view('shop.admin.index', compact(
-            'countOrders',
-            'sumOrders',
-            'countProducts',
-            'countCategories'
-        ));
+        //
     }
 
     /**
@@ -58,7 +36,7 @@ class AdminController extends BaseAdminController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -69,7 +47,7 @@ class AdminController extends BaseAdminController
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -80,7 +58,7 @@ class AdminController extends BaseAdminController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -91,8 +69,8 @@ class AdminController extends BaseAdminController
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -103,7 +81,7 @@ class AdminController extends BaseAdminController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

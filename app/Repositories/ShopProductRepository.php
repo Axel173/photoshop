@@ -50,6 +50,14 @@ class ShopProductRepository extends CoreRepository
         return $result;
     }
 
+    public function countProducts()
+    {
+        $count = $this->startConditions()
+            ->count();
+
+        return $count;
+    }
+
     public function getAllWithCategories()
     {
         /*$columns = [

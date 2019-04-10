@@ -71,4 +71,45 @@ class ShopCategoryRepository extends CoreRepository
 
         return $result;
     }
+
+    public function countCategories()
+    {
+        $count = $this->startConditions()
+            ->count();
+
+        return $count;
+    }
+
+    public function getAllWithPaginate($perPage = null)
+    {
+        $columns = ['id', 'title', 'parent_id'];
+
+        $result = $this
+            ->startConditions()
+            ->select($columns)
+            ->paginate($perPage);
+
+        return $result;
+    }
+
+    public function getEdit($id)
+    {
+        return $this->startConditions()->find($id);
+    }
+
+    public function getForComboBox()
+    {
+        $columns = implode( ', ', [
+            'id',
+            'CONCAT (id, ". ", title) AS id_title',
+        ]);
+
+        $result = $this
+            ->startConditions()
+            ->selectRaw($columns)
+            ->toBase()
+            ->get();
+
+        return $result;
+    }
 }

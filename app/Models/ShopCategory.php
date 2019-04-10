@@ -11,6 +11,14 @@ class ShopCategory extends Model
     use SoftDeletes;
     use Searchable;
 
+    protected $fillable
+        = [
+            'title',
+            'slug',
+            'parent_id',
+            'description',
+        ];
+
     public function products()
     {
         return $this->hasMany(ShopProduct::class, 'category_id');

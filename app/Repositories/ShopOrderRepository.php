@@ -120,4 +120,20 @@ class ShopOrderRepository extends CoreRepository
 
         return false;
     }
+
+    public function countOrders()
+    {
+        $count = $this->startConditions()
+            ->count();
+
+        return $count;
+    }
+
+    public function sumOrders()
+    {
+        $sumOrders = $this->startConditions()
+            ->sum('total_price');
+
+        return $sumOrders;
+    }
 }

@@ -51,7 +51,7 @@
                     </div>
                     <div class="clearfix"></div>
                 </div>
-                <h4 class="tag_head">Keywords</h4>
+                {{--<h4 class="tag_head">Keywords</h4>
                 <ul class="tags_links">
                     <li><a href="#">People</a></li>
                     <li><a href="#">City</a></li>
@@ -81,7 +81,7 @@
                     <li><a href="#">Architecture</a></li>
                     <li><a href="#">Europe</a></li>
                     <li><a href="#">Building</a></li>
-                </ul>
+                </ul>--}}
                 <div class="tags">
                     <h4 class="tag_head">Similar Images</h4>
                     @if($products)

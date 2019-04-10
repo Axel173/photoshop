@@ -72,6 +72,13 @@ Route::group($groupData, function () {
 
     Route::get('admin/', 'AdminController@index')
         ->name('shop.admin');
+
+    Route::resource('admin/orders', 'OrderController')
+        ->names('shop.admin.orders');
+    Route::resource('admin/categories', 'CategoryController')
+        ->names('shop.admin.categories');
+    Route::resource('admin/products', 'ProductController')
+        ->names('shop.admin.products');
 });
 
 Auth::routes();
