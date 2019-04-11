@@ -1,6 +1,5 @@
 @php
-    /** @var \App\Models\ShopCategory $item */
-    /** @var \Illuminate\Database\Eloquent\Collection $categoryList */
+    /** @var \App\Models\ShopOrder $item */
 @endphp
 <div class="row justify-content-center">
     <div class="col md 12">

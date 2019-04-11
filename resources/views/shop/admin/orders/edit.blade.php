@@ -5,10 +5,8 @@
         /** @var \App\Models\ShopCategory $item*/
     @endphp
     @if($item->exists)
-        <form method="POST" action="{{ route('shop.admin.categories.update', $item->id) }}">
+        <form method="POST" action="{{ route('shop.admin.orders.update', $item->id) }}">
             @method('PATCH')
-            @else
-                <form method="POST" action="{{ route('shop.admin.categories.store') }}">
                     @endif
                     @csrf
                     <div class="container">
@@ -20,15 +18,15 @@
                                 @include('shop.admin.includes.left_menu')
                             </div>
                             <div class="col-md-7">
-                                @include('shop.admin.categories.includes.item_edit_main_col')
+                                @include('shop.admin.orders.includes.item_edit_main_col')
                             </div>
                             <div class="col-md-3">
-                                @include('shop.admin.categories.includes.item_edit_add_col')
+                                @include('shop.admin.orders.includes.item_edit_add_col')
                             </div>
                         </div>
                         @if($item->exists)
                             <br>
-                            <form method="POST" action="{{ route('shop.admin.categories.destroy', $item->id) }}">
+                            <form method="POST" action="{{ route('shop.admin.orders.destroy', $item->id) }}">
                                 @method('DELETE')
                                 @csrf
                                 <div class="row justify-content-center">

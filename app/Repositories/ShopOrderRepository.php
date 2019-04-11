@@ -42,7 +42,7 @@ class ShopOrderRepository extends CoreRepository
      * @param $user_id
      * @return mixed
      */
-    public function getOrder($id, $user_id)
+    public function getUserOrder($id, $user_id)
     {
         $order = $this->startConditions()
             ->with([
@@ -62,7 +62,7 @@ class ShopOrderRepository extends CoreRepository
      * @param $perPage
      * @return mixed
      */
-    public function getAllWithPaginate($user_id, $perPage)
+    public function getAllWithUserPaginate($user_id, $perPage = null)
     {
         $result = $this
             ->startConditions()
@@ -74,12 +74,26 @@ class ShopOrderRepository extends CoreRepository
 
         return $result;
     }
+    /**
+     * @param $user_id
+     * @param $perPage
+     * @return mixed
+     */
+    public function getAllWithPaginate($perPage = null)
+    {
+        $result = $this
+            ->startConditions()
+            ->with(['status'])
+            ->paginate($perPage);
+
+        return $result;
+    }
 
     /**
      * @param $user_id
      * @return mixed
      */
-    public function getLast($user_id)
+    public function getLastUserOrder($user_id)
     {
         $orders = $this->startConditions()
             ->latest('created_at')
@@ -101,7 +115,7 @@ class ShopOrderRepository extends CoreRepository
      * @param $user_id
      * @return bool
      */
-    public function cancelOrder($order_id, $user_id)
+    public function cancelUserOrder($order_id, $user_id)
     {
         $order = $this->startConditions()
             ->where([

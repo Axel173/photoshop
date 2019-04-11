@@ -9,9 +9,6 @@
             <div class="col-md-10">
                 @include('shop.admin.includes.result_messages')
 
-                <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-                    <a href="{{ route('shop.admin.categories.create') }}" class="btn btn-primary">Добавить</a>
-                </nav>
                 <div class="card">
                     <div class="card-body">
                         <table class="table table-hover">
@@ -28,7 +25,7 @@
                                 <tr>
                                     <td>{{ $item->id }}</td>
                                     <td>
-                                        <a href="{{ route('shop.admin.categories.edit', $item->id) }}">
+                                        <a href="{{ route('shop.admin.orders.edit', $item->id) }}">
                                             {{ $item->title }}
                                         </a>
                                     </td>

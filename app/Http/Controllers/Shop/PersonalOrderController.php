@@ -29,7 +29,7 @@ class PersonalOrderController extends BaseController
         $user_id = Auth::user()->id;
 
         $orders = $this->shopOrderRepository
-            ->getAllWithPaginate($user_id, 10);
+            ->getAllWithUserPaginate($user_id, 10);
 
         return view('shop.personal.orders.index', compact('orders'));
     }
@@ -42,7 +42,7 @@ class PersonalOrderController extends BaseController
     {
         $user_id = Auth::user()->id;
 
-        $order = $this->shopOrderRepository->cancelOrder($id, $user_id);
+        $order = $this->shopOrderRepository->cancelUserOrder($id, $user_id);
         if(!$order)
         {
             return back()->withErrors(['msg' => 'Произобла ошибка при изменении заказа']);
@@ -82,7 +82,7 @@ class PersonalOrderController extends BaseController
     {
         $user_id = Auth::user()->id;
         $order = $this->shopOrderRepository
-            ->getOrder($id, $user_id);
+            ->getUserOrder($id, $user_id);
         if(!$order)
         {
             abort(404);

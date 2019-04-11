@@ -19,6 +19,19 @@ class ShopCategory extends Model
             'description',
         ];
 
+    public function parentCategory()
+    {
+        return $this->belongsTo(ShopCategory::class, 'parent_id', 'id');
+    }
+
+    public function getParentTitleAttribute()
+    {
+        $title = $this->parentCategory->title
+            ?? $this->title;
+
+        return $title;
+    }
+
     public function products()
     {
         return $this->hasMany(ShopProduct::class, 'category_id');

@@ -87,6 +87,9 @@ class ShopCategoryRepository extends CoreRepository
         $result = $this
             ->startConditions()
             ->select($columns)
+            ->with([
+                'parentCategory:id,title'
+            ])
             ->paginate($perPage);
 
         return $result;
@@ -111,5 +114,12 @@ class ShopCategoryRepository extends CoreRepository
             ->get();
 
         return $result;
+    }
+
+    public function deleteCategory($id)
+    {
+        return $this->startConditions()
+            ->find($id)
+            ->delete();
     }
 }

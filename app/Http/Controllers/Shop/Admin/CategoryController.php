@@ -146,6 +146,14 @@ class CategoryController extends BaseAdminController
      */
     public function destroy($id)
     {
-        //
+        $result = $this->shopCategoryRepository->deleteCategory($id);
+        if ($result) {
+            return redirect()
+                ->route('shop.admin.categories.index')
+                ->with(['success' => 'Успешно удалено']);
+        } else {
+            return back()
+                ->withErrors(['msg' => 'Ошибка удаления']);
+        }
     }
 }
