@@ -23,9 +23,9 @@ class CreateShopProductsTable extends Migration
             $table->integer('price')->unsigned();
             $table->integer('discount')->unsigned();
 
-            $table->text('thumb_img')->default('');
-            $table->text('preview_img')->default('');
-            $table->text('original_img')->default('');
+            $table->text('thumb_img');
+            $table->text('preview_img');
+            $table->text('original_img');
 
             $table->text('description');
 
