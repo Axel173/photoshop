@@ -37,14 +37,14 @@ class ShopProductRepository extends CoreRepository
         return $result;
     }
 
-    public function getProductsWithPaginate($per_page)
+    public function getAllWithPaginate($per_page = null)
     {
         $result = $this->startConditions()
             ->paginate($per_page);
         return $result;
     }
 
-    public function getSearchProductsWithPaginate($value, $per_page)
+    public function getSearchProductsWithPaginate($value, $per_page = null)
     {
         $result = $this->startConditions()::search($value)->paginate($per_page);
         return $result;
@@ -56,6 +56,15 @@ class ShopProductRepository extends CoreRepository
             ->count();
 
         return $count;
+    }
+
+    /**
+     * @param int $id
+     * @return Model
+     */
+    public function getEdit($id)
+    {
+        return $this->startConditions()->find($id);
     }
 
     public function getAllWithCategories()

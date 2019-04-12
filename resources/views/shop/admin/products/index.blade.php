@@ -9,36 +9,38 @@
             <div class="col-md-10">
                 @include('shop.admin.includes.result_messages')
 
+                <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+                    <a href="{{ route('shop.admin.products.create') }}" class="btn btn-primary">Добавить</a>
+                </nav>
                 <div class="card">
                     <div class="card-body">
                         <table class="table table-hover">
                             <thead>
                             <tr>
                                 <th>№</th>
-                                <th>Дата</th>
-                                <th>Сумма</th>
-                                <th>Статус</th>
+                                <!-- Image -->
+                                <th>Image</th>
+                                <!-- Product Name -->
+                                <th>Product Name</th>
+                                <!-- Price -->
+                                <th>Price</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($paginator as $item)
+                                @php /** @var \App\Models\ShopProduct $item*/ @endphp
                                 <tr>
+                                    <td>{{ $item->id }}</td>
                                     <td>
-                                        <a href="{{ route('shop.admin.orders.edit', $item->id) }}">
-                                            {{ $item->id }}
+                                        <a href="{{ route('shop.admin.products.edit', $item->id) }}">
+                                            <img class="img-thumbnail" style="max-width: 150px;" src="{{ asset($item->thumb_img) }}" alt="{{ $item->title }}">
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="{{ route('shop.admin.orders.edit', $item->id) }}">
-                                            {{ \Carbon\Carbon::parse($item->created_at )->format('d M Y, H:i') }}
-                                        </a>
-                                    </td>
-
-                                    <td>
-                                        {{ $item->total_price }} RUB
+                                        {{ $item->title }}
                                     </td>
                                     <td>
-                                        {{ $item->status->title }}
+                                        {{ $item->price }} RUB
                                     </td>
                                 </tr>
                             @endforeach

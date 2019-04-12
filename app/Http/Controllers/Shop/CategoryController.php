@@ -25,7 +25,7 @@ class CategoryController extends BaseController
     public function show(Request $request, $category_slug = '')
     {
         if ($category_slug === '') {
-            $products = $this->shopProductRepository->getProductsWithPaginate(10);
+            $products = $this->shopProductRepository->getAllWithPaginate(10);
         } else {
             $products = $this->shopCategoryRepository->getCategoryWithProductsPaginate($category_slug, 10);
         }

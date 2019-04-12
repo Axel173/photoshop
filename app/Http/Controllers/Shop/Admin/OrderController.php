@@ -2,15 +2,25 @@
 
 namespace App\Http\Controllers\Shop\Admin;
 
+use App\Http\Requests\ShopOrderUpdateRequest;
+use App\Repositories\ShopOrderRepository;
+use App\Repositories\ShopOrderStatusRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class OrderController extends BaseAdminController
 {
 
+    private $shopOrderRepository;
+    private $shopOrderStatusRepository;
+
     public function __construct()
     {
         parent::__construct();
+
+        $this->shopOrderRepository = app(ShopOrderRepository::class);
+        $this->shopOrderStatusRepository = app(ShopOrderStatusRepository::class);
+
     }
     /**
      * Display a listing of the resource.
@@ -19,7 +29,11 @@ class OrderController extends BaseAdminController
      */
     public function index()
     {
-        //
+        $paginator = $this->shopOrderRepository
+            ->getAllWithPaginate(15);
+
+        return view('shop.admin.orders.index', compact('paginator'));
+
     }
 
     /**
@@ -29,7 +43,8 @@ class OrderController extends BaseAdminController
      */
     public function create()
     {
-        //
+        dd(__METHOD__);
+
     }
 
     /**
@@ -40,7 +55,8 @@ class OrderController extends BaseAdminController
      */
     public function store(Request $request)
     {
-        //
+        dd(__METHOD__);
+
     }
 
     /**
@@ -51,7 +67,7 @@ class OrderController extends BaseAdminController
      */
     public function show($id)
     {
-        //
+        dd(__METHOD__, $id);
     }
 
     /**
@@ -62,7 +78,11 @@ class OrderController extends BaseAdminController
      */
     public function edit($id)
     {
-        //
+        $order = $this->shopOrderRepository
+            ->getOrder($id);
+        $statusList = $this->shopOrderStatusRepository
+            ->getForComboBox();
+        return view('shop.admin.orders.edit', compact('order', 'statusList'));
     }
 
     /**
@@ -72,9 +92,28 @@ class OrderController extends BaseAdminController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ShopOrderUpdateRequest $request, $id)
     {
-        //
+        $item = $this->shopOrderRepository->getEdit($id);
+
+        if (empty($item)) {
+            return back()
+                ->withErrors(['msg' => "Запись id=[{$id}] не найдена"])
+                ->withInput();
+        }
+
+        $data = $request->all();
+        $result = $item->update($data);
+
+        if ($result) {
+            return redirect()
+                ->route('shop.admin.orders.edit', $item->id)
+                ->with(['success' => 'Успешно сохранено']);
+        } else {
+            return back()
+                ->withErrors(['msg' => 'Ошибка сохранения'])
+                ->withInput();
+        }
     }
 
     /**
@@ -85,6 +124,14 @@ class OrderController extends BaseAdminController
      */
     public function destroy($id)
     {
-        //
+        $result = $this->shopOrderRepository->deleteOrder($id);
+        if ($result) {
+            return redirect()
+                ->route('shop.admin.orders.index')
+                ->with(['success' => 'Успешно удалено']);
+        } else {
+            return back()
+                ->withErrors(['msg' => 'Ошибка удаления']);
+        }
     }
 }

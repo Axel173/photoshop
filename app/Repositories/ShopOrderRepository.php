@@ -39,6 +39,34 @@ class ShopOrderRepository extends CoreRepository
 
     /**
      * @param $id
+     * @return mixed
+     */
+    public function getOrder($id)
+    {
+        $order = $this->startConditions()
+            ->with([
+                'products',
+                'status'
+            ])
+            ->where([
+                ['id', $id]
+            ])
+            ->first();
+
+        return $order;
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function getEdit($id)
+    {
+        return $this->startConditions()->find($id);
+    }
+
+    /**
+     * @param $id
      * @param $user_id
      * @return mixed
      */
@@ -74,6 +102,7 @@ class ShopOrderRepository extends CoreRepository
 
         return $result;
     }
+
     /**
      * @param $user_id
      * @param $perPage
@@ -135,6 +164,9 @@ class ShopOrderRepository extends CoreRepository
         return false;
     }
 
+    /**
+     * @return mixed
+     */
     public function countOrders()
     {
         $count = $this->startConditions()
@@ -143,11 +175,25 @@ class ShopOrderRepository extends CoreRepository
         return $count;
     }
 
+    /**
+     * @return mixed
+     */
     public function sumOrders()
     {
         $sumOrders = $this->startConditions()
             ->sum('total_price');
 
         return $sumOrders;
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function deleteOrder($id)
+    {
+        return $this->startConditions()
+            ->find($id)
+            ->delete();
     }
 }
