@@ -124,7 +124,7 @@ class OrderController extends BaseAdminController
      */
     public function destroy($id)
     {
-        $result = $this->shopOrderRepository->deleteOrder($id);
+        $result = $this->shopOrderRepository->delete($id);
         if ($result) {
             return redirect()
                 ->route('shop.admin.orders.index')

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\ShopProduct;
+use App\Observers\ShopProductObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +25,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        ShopProduct::observe(ShopProductObserver::class);
     }
 }

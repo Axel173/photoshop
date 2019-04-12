@@ -146,7 +146,7 @@ class CategoryController extends BaseAdminController
      */
     public function destroy($id)
     {
-        $result = $this->shopCategoryRepository->deleteCategory($id);
+        $result = $this->shopCategoryRepository->delete($id);
         if ($result) {
             return redirect()
                 ->route('shop.admin.categories.index')

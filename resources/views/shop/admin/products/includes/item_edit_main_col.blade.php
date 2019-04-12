@@ -44,7 +44,7 @@
                         </div>
 
                         <div class="form-group">
-                            <input name="image" id="image" type="file" class="file" multiple=true data-preview-file-type="any">
+                            <input name="original_img" id="image" type="file" class="file" multiple=true data-preview-file-type="any">
                         </div>
 
                         <div class="form-group">

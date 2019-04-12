@@ -116,7 +116,7 @@ class ShopCategoryRepository extends CoreRepository
         return $result;
     }
 
-    public function deleteCategory($id)
+    public function delete($id)
     {
         return $this->startConditions()
             ->find($id)

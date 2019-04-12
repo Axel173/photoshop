@@ -190,7 +190,7 @@ class ShopOrderRepository extends CoreRepository
      * @param $id
      * @return mixed
      */
-    public function deleteOrder($id)
+    public function delete($id)
     {
         return $this->startConditions()
             ->find($id)

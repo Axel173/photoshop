@@ -7,9 +7,9 @@ use App\Http\Requests\ShopProductUpdateRequest;
 use App\Models\ShopProduct;
 use App\Repositories\ShopCategoryRepository;
 use App\Repositories\ShopProductRepository;
-use Faker\Provider\Image;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Intervention\Image\Facades\Image;
 use Str;
 
 class ProductController extends BaseAdminController
@@ -62,19 +62,7 @@ class ProductController extends BaseAdminController
     public function store(ShopProductCreateRequest $request)
     {
         $data = $request->input();
-        if(empty($data['slug'])){
-            $data['slug'] = Str::slug($data['title']);
-        }
-        if($request->file('image'))
-        {
-            $file = $request->file('image');
-            $path = 'public\images\products\\' . $data['slug'] . '\\';
-            $destinationPath = base_path($path);
-            $file->move($destinationPath, $file->getClientOriginalName());
-            $data['thumb_img'] = $path . $file->getClientOriginalName();
-            $data['preview_img'] = $path . $file->getClientOriginalName();
-            $data['original_img'] = $path . $file->getClientOriginalName();
-        }
+
         //Создаст объект но не добавит в БД
         $item = new ShopProduct($data);
         $item->save();
@@ -93,7 +81,7 @@ class ProductController extends BaseAdminController
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -104,7 +92,7 @@ class ProductController extends BaseAdminController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -141,18 +129,6 @@ class ProductController extends BaseAdminController
 
         $data = $request->all();
 
-        if($request->file('image'))
-        {
-            $file = $request->file('image');
-            $path = 'public\images\products\\' . $data['slug'] . '\\';
-
-            $destinationPath = base_path($path);
-
-            $file->move($destinationPath, $file->getClientOriginalName());
-            $data['thumb_img'] = $path . $file->getClientOriginalName();
-            $data['preview_img'] = $path . $file->getClientOriginalName();
-            $data['original_img'] = $path . $file->getClientOriginalName();
-        }
         $result = $item->update($data);
 
         if ($result) {
@@ -169,11 +145,19 @@ class ProductController extends BaseAdminController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $result = $this->shopProductRepository->delete($id);
+        if ($result) {
+            return redirect()
+                ->route('shop.admin.products.index')
+                ->with(['success' => 'Успешно удалено']);
+        } else {
+            return back()
+                ->withErrors(['msg' => 'Ошибка удаления']);
+        }
     }
 }

@@ -67,6 +67,13 @@ class ShopProductRepository extends CoreRepository
         return $this->startConditions()->find($id);
     }
 
+    public function delete($id)
+    {
+        return $this->startConditions()
+            ->find($id)
+            ->delete();
+    }
+
     public function getAllWithCategories()
     {
         /*$columns = [

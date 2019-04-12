@@ -29,9 +29,9 @@ class ShopProductUpdateRequest extends FormRequest
             'description'   => 'required|string|max:10000|min:5',
             'price'         => 'required|integer',
             'discount'      => 'integer',
-            'thumb_img'     => 'string|max:500',
-            'preview_img'   => 'string|max:500',
-            'original_img'  => 'string|max:500',
+            'thumb_img'     => 'image',
+            'preview_img'   => 'image',
+            'original_img'  => 'image',
             'category_id'   => 'required|integer|exists:shop_categories,id'
         ];
     }
