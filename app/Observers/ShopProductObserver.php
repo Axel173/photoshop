@@ -57,9 +57,9 @@ class ShopProductObserver
             $prev->save($destinationPath . 'prev_' . $extension);
             $thumb->save($destinationPath . 'thumb_' . $extension);
 
-            $shopProduct->preview_img = 'public/images/products/'. md5($extension . time()) .'/prev_' . $extension;
-            $shopProduct->thumb_img = 'public/images/products/'. md5($extension . time()) .'/thumb_' . $extension;
-            $shopProduct->original_img = 'public/images/products/' . md5($extension . time()) . '/' . $extension;
+            $shopProduct->preview_img = 'images/products/'. md5($extension . time()) .'/prev_' . $extension;
+            $shopProduct->thumb_img = 'images/products/'. md5($extension . time()) .'/thumb_' . $extension;
+            $shopProduct->original_img = 'images/products/' . md5($extension . time()) . '/' . $extension;
         }
     }
 
